@@ -12,7 +12,9 @@ import androidx.navigation.ui.*
 import com.kemaltalas.fakeshop.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.kemaltalas.fakeshop.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityMainBinding
