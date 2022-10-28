@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.kemaltalas.fakeshop.presentation.fragments.SplashFragment"
+        android:label="SplashFragment" >
+        <action
+            android:id="@+id/action_splashFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.kemaltalas.fakeshop.presentation.fragments.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_categoriesFragment"
+            app:destination="@id/categoriesFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_basketFragment"
+            app:destination="@id/basketFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_userPanelFragment"
+            app:destination="@id/userPanelFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoriesFragment"
+        android:name="com.kemaltalas.fakeshop.presentation.fragments.CategoriesFragment"
+        android:label="CategoriesFragment" />
+    <fragment
+        android:id="@+id/basketFragment"
+        android:name="com.kemaltalas.fakeshop.presentation.fragments.BasketFragment"
+        android:label="BasketFragment" />
+    <fragment
+        android:id="@+id/userPanelFragment"
+        android:name="com.kemaltalas.fakeshop.presentation.fragments.UserPanelFragment"
+        android:label="UserPanelFragment" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.kemaltalas.fakeshop.presentation.fragments.LoginFragment"
+        android:label="LoginFragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_userPanelFragment"
+            app:destination="@id/userPanelFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.kemaltalas.fakeshop.presentation.fragments.RegisterFragment"
+        android:label="RegisterFragment" />
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.kemaltalas.fakeshop.presentation.fragments.FavoritesFragment"
+        android:label="FavoritesFragment" />
+</navigation>
