@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         app:cardCornerRadius="20dp"
         app:cardBackgroundColor="@color/white"
-        android:layout_marginVertical="10dp"
+        android:layout_marginVertical="7dp"
         >
 
         <LinearLayout

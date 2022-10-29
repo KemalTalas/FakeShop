@@ -1,5 +1,6 @@
 package com.kemaltalas.fakeshop.data.di
 
+import com.kemaltalas.fakeshop.presentation.adapters.CategoriesAdapter
 import com.kemaltalas.fakeshop.presentation.adapters.HomeAdapter
 import dagger.Module
 import dagger.Provides
@@ -17,6 +18,11 @@ class AdapterModule {
         return HomeAdapter()
     }
 
+    @Singleton
+    @Provides
+    fun providesCategoriesAdapter() : CategoriesAdapter{
+        return CategoriesAdapter()
+    }
 
 
 }

@@ -29,7 +29,7 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
     val recyclerListDiffer = AsyncListDiffer(this@HomeAdapter,diffUtil)
 
     var products : List<Product>
-        get() = recyclerListDiffer.currentList
+        get() = recyclerListDiffer.currentList.shuffled().take(8)
         set(value) = recyclerListDiffer.submitList(value)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
