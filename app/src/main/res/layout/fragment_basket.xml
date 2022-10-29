@@ -44,13 +44,15 @@
         android:visibility="invisible"/>
 
     <LinearLayout
+        android:id="@+id/basket_checkout_layout"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:orientation="horizontal"
         android:gravity="center_vertical"
         app:layout_constraintTop_toBottomOf="@+id/basket_recyclerview"
         android:layout_marginTop="30dp"
-        tools:layout_editor_absoluteX="30dp">
+        tools:layout_editor_absoluteX="30dp"
+        android:visibility="invisible">
 
         <TextView
             android:id="@+id/basket_price"

@@ -40,122 +40,138 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="USER NAME SURNAME"
-        android:textStyle="bold"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userpanel_imageview" />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/userpanel_username_tv"
-        android:layout_marginTop="100dp">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userpanel_username_tv">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
             android:layout_marginStart="10dp"
-            android:clickable="true">
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                app:contentPadding="5dp"
+                android:background="#BDBDBD"
                 android:src="@drawable/person_ic"
-                android:background="#BDBDBD"
-                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"/>
+                app:contentPadding="5dp"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
                 android:text="Edit Profile"
-                android:textSize="16sp"
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                android:layout_marginStart="30dp"/>
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/next_ic"
-                android:layout_marginStart="190dp"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:clickable="true">
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                app:contentPadding="10dp"
+                android:background="#BDBDBD"
                 android:src="@drawable/lock_ic"
-                android:background="#BDBDBD"
-                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"/>
+                app:contentPadding="10dp"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
                 android:text="Change Password"
-                android:textSize="16sp"
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                android:layout_marginStart="30dp"/>
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/next_ic"
-                android:layout_marginStart="140dp"/>
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:clickable="true">
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                app:contentPadding="7dp"
-                android:src="@drawable/notifications_ic"
                 android:background="#BDBDBD"
-                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"/>
+                android:src="@drawable/notifications_ic"
+                app:contentPadding="7dp"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
                 android:text="Notifications"
-                android:textSize="16sp"
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                android:layout_marginStart="30dp"/>
-
-            <com.google.android.material.switchmaterial.SwitchMaterial
-                android:layout_width="60dp"
-                android:layout_height="30dp"
-                android:checked="false"
-                android:layout_marginStart="150dp"/>
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
 
         </LinearLayout>
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="15dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userpanel_username_tv">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/next_ic"
+            android:layout_marginTop="10dp"/>
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/next_ic"
+            android:layout_marginTop="30dp"/>
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:checked="false"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="-6dp"/>
+
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
