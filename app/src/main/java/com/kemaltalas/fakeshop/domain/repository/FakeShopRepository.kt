@@ -8,9 +8,9 @@ import retrofit2.Response
 interface FakeShopRepository {
 
     //Product Remote Functions
-    suspend fun gelAllProducts() : Resource<ArrayList<Product>>
+    suspend fun getAllProducts() : Resource<ArrayList<Product>>
     suspend fun getProduct(itemId: Int) : Resource<Product>
-    suspend fun gelAllCategories() : Resource<ArrayList<String>>
+    suspend fun getAllCategories(): Resource<ArrayList<String>>
     suspend fun getCategoryProducts(category: String) : Resource<Product>
 
     //Local Data Cart Functions

@@ -15,7 +15,7 @@ class FakeShopRepositoryImp @Inject constructor(
     private val remoteDataSource: RemoteDataSource,
     private val localDataSource: LocalDataSource
 ) : FakeShopRepository{
-    override suspend fun gelAllProducts(): Resource<ArrayList<Product>> {
+    override suspend fun getAllProducts(): Resource<ArrayList<Product>> {
         return responseToProductListResult(remoteDataSource.getAllProducts())
     }
 
@@ -23,7 +23,7 @@ class FakeShopRepositoryImp @Inject constructor(
         return responseToProductResult(remoteDataSource.getProduct(itemId))
     }
 
-    override suspend fun gelAllCategories(): Resource<ArrayList<String>> {
+    override suspend fun getAllCategories(): Resource<ArrayList<String>> {
         return responseToCategoryResult(remoteDataSource.gelAllCategories())
     }
 
