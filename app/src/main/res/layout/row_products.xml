@@ -29,7 +29,7 @@
             <TextView
                 android:id="@+id/row_product_title"
                 android:layout_width="160dp"
-                android:layout_height="50dp"
+                android:layout_height="55dp"
                 android:layout_marginTop="10dp"
                 android:text="ITEM NAME"
                 android:textColor="@color/black"

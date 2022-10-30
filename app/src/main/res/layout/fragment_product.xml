@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F1F1F1"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/products_page">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_products"

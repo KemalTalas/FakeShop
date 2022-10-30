@@ -2,6 +2,7 @@ package com.kemaltalas.fakeshop.presentation.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Filter
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -61,6 +62,17 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ProductsViewHolder>
     override fun getItemCount(): Int {
         return recyclerListDiffer.currentList.size
     }
+
+//    fun getFilter() : Filter = object : Filter(){
+//        override fun performFiltering(constraint: CharSequence?): FilterResults {
+//            TODO("Not yet implemented")
+//        }
+//
+//        override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+//            TODO("Not yet implemented")
+//        }
+//
+//    }
 
 
 }
