@@ -28,8 +28,9 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
     }
     val recyclerListDiffer = AsyncListDiffer(this@HomeAdapter,diffUtil)
 
+
     var products : List<Product>
-        get() = recyclerListDiffer.currentList.shuffled().take(8)
+        get() = recyclerListDiffer.currentList.sortedByDescending { it.price.toDouble() }.take(8)
         set(value) = recyclerListDiffer.submitList(value)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
@@ -63,8 +64,12 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
             }else{
                 binding.homeRvItemName.text = "${product.title.substring(0,21)}..."
             }
+            if (product.description.length<=25){
+                binding.homeRvItemDesc.text = product.description
+            }else{
+                binding.homeRvItemDesc.text = "${product.description.substring(0,21)}..."
+            }
             binding.homeRvItemPrice.text = "$${product.price}"
-            binding.homeRvItemDesc.text = product.description
 
             binding.homeRowItem.setOnClickListener {
                 onItemClickListener(product)

@@ -23,4 +23,4 @@ data class Product(
 //    @SerializedName("rating")
 //    val rating: String
 
-)
+) : java.io.Serializable
