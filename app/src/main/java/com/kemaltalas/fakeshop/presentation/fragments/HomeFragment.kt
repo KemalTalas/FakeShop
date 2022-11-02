@@ -73,6 +73,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         binding.homeRecycler.adapter = adapter
         binding.homeRecycler.layoutManager = LinearLayoutManager(requireContext())
+        binding.homeRecycler.itemAnimator = null
 
 
         binding.homeSearchView.clearFocus()
@@ -80,7 +81,21 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProductFragment("all"))
         }
 
-
+        binding.homeAllButton.setOnClickListener {
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProductFragment("all"))
+        }
+        binding.homeElectronicsButton.setOnClickListener {
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProductFragment("electronics"))
+        }
+        binding.homeJeweleryButton.setOnClickListener {
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProductFragment("jewelery"))
+        }
+        binding.homeMensclothingButton.setOnClickListener {
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProductFragment("men's clothing"))
+        }
+        binding.homeWomensclothingButton.setOnClickListener {
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProductFragment("women's clothing"))
+        }
     }
 
 }

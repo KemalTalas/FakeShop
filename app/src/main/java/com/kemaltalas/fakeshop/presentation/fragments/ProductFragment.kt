@@ -1,6 +1,7 @@
 package com.kemaltalas.fakeshop.presentation.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
@@ -63,6 +64,7 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
             viewModel.getAllProducts()
             binding.productsFilterbutton.visibility = View.VISIBLE
         }else{
+            filteredList.clear()
             viewModel.getCategoryProducts(categoryName)
             binding.productsFilterbutton.visibility = View.INVISIBLE
         }
@@ -78,7 +80,6 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
             list = adapter.recyclerListDiffer.currentList
         }
 
-        filteredList.addAll(adapter.recyclerListDiffer.currentList)
 
         binding.productsRecycler.adapter = adapter
         binding.productsRecycler.layoutManager = GridLayoutManager(requireContext(),2,GridLayoutManager.VERTICAL,false)
@@ -91,6 +92,7 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
         //**BACK BUTTON
         binding.productsBackbutton.setOnClickListener {
             findNavController().popBackStack()
+            filteredList.clear()
         }
 
         //** SORT    ***///
@@ -127,9 +129,11 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
                         sortArray[1] ->{
                             if (filteredList.isNotEmpty()){
                                 adapter.recyclerListDiffer.submitList(filteredList.sortedBy { it.price.toDouble() })
+                                Log.e("Sort Listesi","Filtered List kullanıldı")
                             }
                             else {
                                 adapter.recyclerListDiffer.submitList(list.sortedBy { it.price.toDouble() })
+                                Log.e("Sort Listesi","Normal list kullanıldı")
                             }
                             binding.productsRecycler.smoothScrollToPosition(0)
                         }
@@ -224,6 +228,14 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
                 viewModel.products.observe(viewLifecycleOwner){
                     var searchedList = it.data?.filter { it.title.contains(newText.toString(),ignoreCase = true)}
                     adapter.recyclerListDiffer.submitList(searchedList)
+                    if (searchedList.isNullOrEmpty() || searchedList.size==0 || searchedList.size > 19){
+                        binding.productsResultTv.visibility = View.GONE
+                    }else if(searchedList.size >0){
+                        binding.productsResultTv.visibility = View.VISIBLE
+                        binding.productsResultTv.text = "Found ${searchedList.size} results"
+                    }else{
+                        binding.productsResultTv.visibility = View.GONE
+                    }
                 }
 
                 return false

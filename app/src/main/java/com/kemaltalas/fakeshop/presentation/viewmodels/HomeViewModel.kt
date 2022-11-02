@@ -20,6 +20,8 @@ class HomeViewModel @Inject constructor(
 
     val products : MutableLiveData<Resource<ArrayList<Product>>> = MutableLiveData()
 
+    val listSize : MutableLiveData<Int> = MutableLiveData()
+
     fun getAllProducts() = viewModelScope.launch {
        try {
            products.postValue(Resource.Loading())
@@ -43,6 +45,10 @@ class HomeViewModel @Inject constructor(
         }else{
             getAllProducts()
         }
+    }
+
+    fun getListSize(product: ArrayList<Product>) = viewModelScope.launch {
+        listSize.postValue(product.size)
     }
 
 }

@@ -44,7 +44,7 @@ class BasketAdapter : RecyclerView.Adapter<BasketAdapter.BasketViewHolder>() {
         onItemClickListener = listener
     }
 
-    private val diffUtil = object : DiffUtil.ItemCallback<CartItems>(){
+     private val diffUtil = object : DiffUtil.ItemCallback<CartItems>(){
         override fun areItemsTheSame(oldItem: CartItems, newItem: CartItems): Boolean {
             return oldItem.id == newItem.id
         }

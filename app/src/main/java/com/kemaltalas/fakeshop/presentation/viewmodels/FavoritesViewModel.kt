@@ -1,14 +1,12 @@
 package com.kemaltalas.fakeshop.presentation.viewmodels
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.kemaltalas.fakeshop.data.model.CartItems
 import com.kemaltalas.fakeshop.data.model.Product
 import com.kemaltalas.fakeshop.data.util.Resource
 import com.kemaltalas.fakeshop.domain.usecase.FavoritesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -19,6 +17,9 @@ class FavoritesViewModel @Inject constructor(
 
     //Favorites
     val favorites : MutableLiveData<Resource<ArrayList<Product>>> = MutableLiveData()
+
+    val totalItemsPrice : MutableLiveData<Double> = MutableLiveData()
+
     fun getFavorites() = favoritesUseCase.getFavorites()
 
     fun addFavorites(product: Product) = viewModelScope.launch { favoritesUseCase.addFavorites(product) }
@@ -35,6 +36,12 @@ class FavoritesViewModel @Inject constructor(
 
     fun getCartItems() = favoritesUseCase.getCartItems()
 
-    fun clearCart() = viewModelScope.launch { favoritesUseCase.clearCartItems() }
+    fun clearCart() = viewModelScope.launch(IO) { favoritesUseCase.clearCartItems() }
+
+    fun calculateTotal(cartItems: List<CartItems>) = viewModelScope.launch {
+        var total = 0.00
+        cartItems.forEach { total += it.price.toDouble() }
+        totalItemsPrice.postValue(total)
+    }
 
 }
