@@ -9,6 +9,6 @@ interface RemoteDataSource {
     suspend fun getAllProducts() : Response<ArrayList<Product>>
     suspend fun getProduct(itemId: Int) : Response<Product>
     suspend fun gelAllCategories() : Response<ArrayList<String>>
-    suspend fun getCategoryProducts(category: String) : Response<Product>
+    suspend fun getCategoryProducts(category: String) : Response<ArrayList<Product>>
 
 }

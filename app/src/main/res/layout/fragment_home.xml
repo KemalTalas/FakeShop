@@ -198,7 +198,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="vertical"
-                            android:background="#8AD136F4"
+                            android:background="#A4D81B60"
                             android:gravity="center">
                             <ImageView
                                 android:layout_width="50dp"

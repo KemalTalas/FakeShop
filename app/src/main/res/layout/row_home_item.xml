@@ -72,20 +72,6 @@
                         android:textStyle="bold"
                         android:textSize="25sp"/>
 
-                    <ImageView
-                        android:id="@+id/home_rv_item_unfav"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:src="@drawable/not_favorited_ic"
-                        android:layout_marginLeft="40dp"/>
-
-                    <ImageView
-                        android:id="@+id/home_rv_item_fav"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:src="@drawable/favorited_ic"
-                        android:layout_marginLeft="-30dp"
-                        android:visibility="invisible"/>
 
                 </LinearLayout>
 

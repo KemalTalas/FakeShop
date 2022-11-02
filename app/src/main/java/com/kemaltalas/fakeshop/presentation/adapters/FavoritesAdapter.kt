@@ -2,29 +2,29 @@ package com.kemaltalas.fakeshop.presentation.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Filter
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
 import com.kemaltalas.fakeshop.data.model.Product
+import com.kemaltalas.fakeshop.databinding.RowHomeItemBinding
+import com.kemaltalas.fakeshop.databinding.RowListItemBinding
 import com.kemaltalas.fakeshop.databinding.RowProductsBinding
 
-class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ProductsViewHolder>() {
+class FavoritesAdapter : RecyclerView.Adapter<FavoritesAdapter.FavoritesViewHolder>() {
 
-    inner class ProductsViewHolder(private val binding: RowProductsBinding) : RecyclerView.ViewHolder(binding.root){
+    inner class FavoritesViewHolder(private val binding: RowHomeItemBinding) : RecyclerView.ViewHolder(binding.root){
         fun bindItem(product: Product){
-            binding.rowProductTitle.text = product.title
-            binding.rowProductPrice.text = "$${product.price}"
+            binding.homeRvItemName.text = product.title
+            binding.homeRvItemPrice.text = "$${product.price}"
+            binding.homeRvItemDesc.text = product.description
 
-            Glide.with(binding.rowProductImage)
+            Glide.with(binding.homeRvImage)
                 .load(product.image)
-                .into(binding.rowProductImage)
+                .into(binding.homeRvImage)
 
-            binding.productRowItem.setOnClickListener {
+            binding.homeRowItem.setOnClickListener {
                 onItemClickListener(product)
-                notifyDataSetChanged()
             }
         }
     }
@@ -44,15 +44,15 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ProductsViewHolder>
         }
 
     }
-    val recyclerListDiffer = AsyncListDiffer(this@ProductsAdapter,diffUtil)
+    val recyclerListDiffer = AsyncListDiffer(this@FavoritesAdapter,diffUtil)
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductsViewHolder {
-        val binding = RowProductsBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-        return ProductsViewHolder(binding)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoritesViewHolder {
+        val binding = RowHomeItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        return FavoritesViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: ProductsViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: FavoritesViewHolder, position: Int) {
         val product = recyclerListDiffer.currentList[position]
         holder.bindItem(product)
     }
@@ -60,5 +60,7 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ProductsViewHolder>
     override fun getItemCount(): Int {
         return recyclerListDiffer.currentList.size
     }
+
+
 
 }

@@ -1,21 +1,31 @@
 package com.kemaltalas.fakeshop.presentation.fragments
 
-import android.app.AlertDialog
 import android.os.Bundle
 import android.view.View
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.kemaltalas.fakeshop.R
 import com.kemaltalas.fakeshop.data.model.Product
+import com.kemaltalas.fakeshop.data.remote.ApiService
+import com.kemaltalas.fakeshop.data.util.Constants.BASE_URL
+import com.kemaltalas.fakeshop.data.util.Resource
 import com.kemaltalas.fakeshop.data.util.hideKeyboards
 import com.kemaltalas.fakeshop.databinding.FragmentProductBinding
 import com.kemaltalas.fakeshop.presentation.adapters.ProductsAdapter
 import com.kemaltalas.fakeshop.presentation.viewmodels.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
 import java.util.*
 import javax.inject.Inject
 import kotlin.collections.ArrayList
@@ -32,8 +42,16 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
 
     lateinit var list : MutableList<Product>
 
+
     private var filteredList = mutableListOf<Product>()
 
+
+    private lateinit var categoryName : String
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        categoryName = ProductFragmentArgs.fromBundle(requireArguments()).categoryName
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -41,16 +59,29 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
         val binding = FragmentProductBinding.bind(view)
         fragmentBinding = binding
 
-        viewModel.getAllProducts()
+        if(categoryName=="all"){
+            viewModel.getAllProducts()
+            binding.productsFilterbutton.visibility = View.VISIBLE
+        }else{
+            viewModel.getCategoryProducts(categoryName)
+            binding.productsFilterbutton.visibility = View.INVISIBLE
+        }
 
-        viewModel.products.observe(viewLifecycleOwner){
+        println(categoryName)
+
+
+
+
+        viewModel.products.observe(viewLifecycleOwner) {
             adapter.recyclerListDiffer.submitList(it.data)
+            adapter.notifyDataSetChanged()
             list = adapter.recyclerListDiffer.currentList
         }
+
         filteredList.addAll(adapter.recyclerListDiffer.currentList)
 
         binding.productsRecycler.adapter = adapter
-        binding.productsRecycler.layoutManager = StaggeredGridLayoutManager(2,RecyclerView.VERTICAL)
+        binding.productsRecycler.layoutManager = GridLayoutManager(requireContext(),2,GridLayoutManager.VERTICAL,false)
 
         adapter.setOnItemClickListener {
             val action = ProductFragmentDirections.actionProductFragmentToDetailScreenFragment(it)
@@ -70,6 +101,7 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
         binding.productsPage.setOnClickListener { hideKeyboards() }
         binding.toolbarProducts.setOnClickListener { hideKeyboards() }
 
+//        viewModel.getCategoryProducts(categoryName)
 
 
         binding.productsSortbutton.setOnClickListener {
@@ -159,12 +191,7 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
 
                             }
 
-                            4 -> {
-                                    filteredList.clear()
-                                    adapter.recyclerListDiffer.submitList(list.filter { it.category== selectedItemList[0] || it.category == selectedItemList[2] || it.category == selectedItemList[3] })
-                                    filteredList.addAll(list.filter { it.category== selectedItemList[0] || it.category == selectedItemList[2] || it.category == selectedItemList[3] })
-
-                            } 0,5 ->{
+                            else -> {
                                 filteredList.clear()
                                 adapter.recyclerListDiffer.submitList(list)
                                 filteredList.addAll(list)

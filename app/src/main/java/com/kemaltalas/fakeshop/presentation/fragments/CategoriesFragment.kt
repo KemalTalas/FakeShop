@@ -3,6 +3,7 @@ package com.kemaltalas.fakeshop.presentation.fragments
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kemaltalas.fakeshop.R
 import com.kemaltalas.fakeshop.data.util.Resource
@@ -48,6 +49,12 @@ class CategoriesFragment : Fragment(R.layout.fragment_categories) {
 
         binding.categoriesRecyclerview.adapter = adapter
         binding.categoriesRecyclerview.layoutManager = LinearLayoutManager(requireContext())
+        binding.categoriesRecyclerview.itemAnimator = null
+
+        adapter.setOnItemClickListener {
+            val action = CategoriesFragmentDirections.actionCategoriesFragmentToProductFragment(it.category)
+            findNavController().navigate(action)
+        }
 
     }
 

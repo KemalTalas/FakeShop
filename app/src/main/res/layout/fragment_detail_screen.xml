@@ -26,17 +26,6 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/detail_unfav"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:src="@drawable/favorited_ic"
-            android:elevation="10dp"
-            android:visibility="invisible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-        <ImageView
             android:id="@+id/detail_fav"
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -44,7 +33,6 @@
             android:layout_marginEnd="20dp"
             android:src="@drawable/not_favorited_ic"
             android:elevation="10dp"
-            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

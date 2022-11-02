@@ -21,11 +21,4 @@ fun Fragment.hideKeyboards() {
         inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
-    fun List<Product>.filterBy(count : Int, list: ArrayList<String>) : List<Product>{
-
-        if (count==0){
-            TODO()
-        }
-        TODO()
-    }
 

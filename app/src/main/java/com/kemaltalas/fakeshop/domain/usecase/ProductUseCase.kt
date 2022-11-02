@@ -14,7 +14,7 @@ class ProductUseCase @Inject constructor(
     suspend fun getAllCategories() : Resource<ArrayList<String>>{
         return repository.getAllCategories()
     }
-    suspend fun getCategoryItems(category: String) : Resource<Product>{
+    suspend fun getCategoryItems(category: String) : Resource<ArrayList<Product>>{
         return repository.getCategoryProducts(category)
     }
 }

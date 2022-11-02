@@ -23,7 +23,7 @@ class RemoteDataSourceImp @Inject constructor(
         return apiService.getCategories()
     }
 
-    override suspend fun getCategoryProducts(category: String): Response<Product> {
+    override suspend fun getCategoryProducts(category: String): Response<ArrayList<Product>> {
         return apiService.getCategoryItem(category)
     }
 }

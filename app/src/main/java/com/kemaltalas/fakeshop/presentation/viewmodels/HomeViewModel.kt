@@ -30,4 +30,19 @@ class HomeViewModel @Inject constructor(
        }
     }
 
+    fun getCategoryProducts(categoryName: String) = viewModelScope.launch {
+        if(categoryName != "All"){
+            products.postValue(Resource.Loading())
+            try {
+                    val apiResult1 = productUseCase.getCategoryItems(categoryName)
+                    products.postValue(apiResult1)
+
+            }catch (e : Exception){
+                products.postValue(Resource.Error(message = e.localizedMessage ?: "Unknown Error"))
+            }
+        }else{
+            getAllProducts()
+        }
+    }
+
 }

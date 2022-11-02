@@ -77,7 +77,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         binding.homeSearchView.clearFocus()
         binding.frameLayoutHome.setOnClickListener {
-            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProductFragment())
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProductFragment("all"))
         }
 
 

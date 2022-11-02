@@ -2,6 +2,7 @@ package com.kemaltalas.fakeshop.domain.implementation
 
 import androidx.lifecycle.LiveData
 import com.kemaltalas.fakeshop.data.local.FakeShopDao
+import com.kemaltalas.fakeshop.data.model.CartItems
 import com.kemaltalas.fakeshop.data.model.Product
 import com.kemaltalas.fakeshop.data.remote.ApiService
 import com.kemaltalas.fakeshop.data.util.Resource
@@ -27,24 +28,25 @@ class FakeShopRepositoryImp @Inject constructor(
         return responseToCategoryResult(remoteDataSource.gelAllCategories())
     }
 
-    override suspend fun getCategoryProducts(category: String): Resource<Product> {
-        return responseToProductResult(remoteDataSource.getCategoryProducts(category))
+    override suspend fun getCategoryProducts(category: String): Resource<ArrayList<Product>> {
+        return responseToProductListResult(remoteDataSource.getCategoryProducts(category))
     }
 
-    override suspend fun addToCart(product: Product) {
-        return localDataSource.addToCart(product)
+    override suspend fun addToCart(cartItems: CartItems) {
+        return localDataSource.addToCart(cartItems)
     }
 
-    override fun getCartItems(): LiveData<List<Product>> {
+    override fun getCartItems(): LiveData<List<CartItems>> {
         return localDataSource.getCartItems()
     }
 
-//    override suspend fun updateCartItems(product: Product) {
-//        return
-//    }
+    override suspend fun clearAllCart() {
+        return localDataSource.clearAllCart()
+    }
 
-    override suspend fun deleteCartItems(product: Product) {
-        return localDataSource.deleteCartItems(product)
+
+    override suspend fun deleteCartItems(cartItems: CartItems) {
+        return localDataSource.deleteCartItems(cartItems)
     }
 
     override suspend fun addToFavorites(product: Product) {
@@ -57,6 +59,10 @@ class FakeShopRepositoryImp @Inject constructor(
 
     override fun getFavoriteItems(): LiveData<List<Product>> {
         return localDataSource.getFavoritesItems()
+    }
+
+    override suspend fun clearAllFavorites() {
+        return localDataSource.clearAllFavorites()
     }
 
     private fun responseToProductResult(response: Response<Product>) : Resource<Product>{
@@ -82,6 +88,15 @@ class FakeShopRepositoryImp @Inject constructor(
               return Resource.Success(it)
           }
       }
+        return Resource.Error(message = "Error In Categories")
+    }
+
+    private fun responseToCategoryProductsResult(response: Response<ArrayList<Product>>) : Resource<ArrayList<Product>>{
+        if (response.isSuccessful){
+            response.body()?.let {
+                return Resource.Success(it)
+            }
+        }
         return Resource.Error(message = "Error In Categories")
     }
 

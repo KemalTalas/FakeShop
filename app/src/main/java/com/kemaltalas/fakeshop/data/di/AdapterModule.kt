@@ -1,8 +1,6 @@
 package com.kemaltalas.fakeshop.data.di
 
-import com.kemaltalas.fakeshop.presentation.adapters.CategoriesAdapter
-import com.kemaltalas.fakeshop.presentation.adapters.HomeAdapter
-import com.kemaltalas.fakeshop.presentation.adapters.ProductsAdapter
+import com.kemaltalas.fakeshop.presentation.adapters.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -29,6 +27,18 @@ class AdapterModule {
     @Provides
     fun providesProductsAdapter() : ProductsAdapter{
         return ProductsAdapter()
+    }
+
+    @Singleton
+    @Provides
+    fun providesFavoritesAdapter() : FavoritesAdapter{
+        return FavoritesAdapter()
+    }
+
+    @Singleton
+    @Provides
+    fun providesBasketAdapter() : BasketAdapter{
+        return BasketAdapter()
     }
 
 

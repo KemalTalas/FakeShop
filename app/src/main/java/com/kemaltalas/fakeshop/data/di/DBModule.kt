@@ -22,7 +22,9 @@ class DBModule {
     @Singleton
     @Provides
     fun providesDatabase(app : Application) : FakeShopDatabase{
-        return Room.databaseBuilder(app,FakeShopDatabase::class.java,"FakeShopDB").build()
+        return Room.databaseBuilder(app,FakeShopDatabase::class.java,"FakeShopDB")
+            .fallbackToDestructiveMigration()
+            .build()
     }
 
     @Singleton
