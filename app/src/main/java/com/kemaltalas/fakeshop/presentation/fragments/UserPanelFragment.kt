@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.kemaltalas.fakeshop.R
 import com.kemaltalas.fakeshop.data.util.Constants
 import com.kemaltalas.fakeshop.data.util.SharedPrefs
@@ -31,10 +32,16 @@ class UserPanelFragment : Fragment(R.layout.fragment_user_panel) {
         val binding = FragmentUserPanelBinding.bind(view)
         fragmentBinding = binding
 
-        var text = ""
         viewModel.getPerson.observe(viewLifecycleOwner){
             binding.userpanelUsernameTv.text = it.firstname.replaceFirstChar { it.uppercase() }+" "+it.lastname.replaceFirstChar { it.uppercase() }
             binding.root.invalidate()
+        }
+
+        binding.upLogout.setOnClickListener {
+            findNavController().navigateUp()
+        }
+        binding.upLogoutImg.setOnClickListener {
+            findNavController().navigateUp()
         }
 
 

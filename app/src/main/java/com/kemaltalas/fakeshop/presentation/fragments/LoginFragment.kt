@@ -38,6 +38,12 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         val binding = FragmentLoginBinding.bind(view)
         fragmentBinding = binding
 
+        viewModel.getPerson.observe(viewLifecycleOwner){
+            if (it != null){
+                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToUserPanelFragment())
+            }
+        }
+
         binding.loginSigninBtn.setOnClickListener {
            viewModel.getPerson.observe(viewLifecycleOwner){ user->
 

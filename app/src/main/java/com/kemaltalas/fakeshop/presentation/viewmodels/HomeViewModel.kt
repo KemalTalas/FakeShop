@@ -1,11 +1,9 @@
 package com.kemaltalas.fakeshop.presentation.viewmodels
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.kemaltalas.fakeshop.data.model.Product
+import com.kemaltalas.fakeshop.data.model.UserDetails
 import com.kemaltalas.fakeshop.data.util.Resource
 import com.kemaltalas.fakeshop.domain.usecase.ProductUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -21,6 +19,8 @@ class HomeViewModel @Inject constructor(
     val products : MutableLiveData<Resource<ArrayList<Product>>> = MutableLiveData()
 
     val listSize : MutableLiveData<Int> = MutableLiveData()
+
+    val user : LiveData<UserDetails> = productUseCase.getUsername()
 
     fun getAllProducts() = viewModelScope.launch {
        try {
@@ -50,5 +50,11 @@ class HomeViewModel @Inject constructor(
     fun getListSize(product: ArrayList<Product>) = viewModelScope.launch {
         listSize.postValue(product.size)
     }
+
+    fun getUsers() = liveData<UserDetails> {
+        productUseCase.getUsername()
+    }
+
+
 
 }
