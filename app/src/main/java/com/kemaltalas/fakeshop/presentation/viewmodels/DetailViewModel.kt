@@ -15,7 +15,14 @@ class DetailViewModel @Inject constructor(
     private val favoritesUseCase: FavoritesUseCase
 ) : ViewModel() {
 
-    fun addFavorites(product: Product) = viewModelScope.launch(IO) { favoritesUseCase.addFavorites(product) }
+    fun addFavorites(product: Product) = viewModelScope.launch(IO) {
+        favoritesUseCase.addFavorites(product)
+    }
+
+    fun updateFavoritesItem(product: Product, isLiked : Boolean) = viewModelScope.launch {
+        val copy = product.copy(isFavorited = isLiked)
+        favoritesUseCase.updateFavorites(copy)
+    }
 
     fun deleteFavorites(product: Product) = viewModelScope.launch(IO) { favoritesUseCase.deleteFavorites(product) }
 

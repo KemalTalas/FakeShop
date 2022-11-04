@@ -33,6 +33,8 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
         get() = recyclerListDiffer.currentList.sortedByDescending { it.price.toDouble() }.take(8)
         set(value) = recyclerListDiffer.submitList(value)
 
+    var likedlist = products.filter { it.isFavorited == true }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
         val binding = RowHomeItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return HomeViewHolder(binding)
@@ -73,6 +75,16 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
 
             binding.homeRowItem.setOnClickListener {
                 onItemClickListener(product)
+            }
+
+
+
+            binding.homeFavoriteIc.apply {
+                if (likedlist.contains(product)){
+                    setImageResource(R.drawable.favorited_ic)
+                }else{
+                    setImageResource(R.drawable.not_favorited_ic)
+                }
             }
 
         }

@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, nd: NavDestination, _ ->
             // the IDs of fragments as defined in the `navigation_graph`
             if (nd.id == R.id.homeFragment || nd.id == R.id.categoriesFragment
-                || nd.id == R.id.basketFragment || nd.id == R.id.favoritesFragment || nd.id == R.id.userPanelFragment
+                || nd.id == R.id.basketFragment || nd.id == R.id.favoritesFragment || nd.id == R.id.loginFragment || nd.id == R.id.userPanelFragment
             ) {
                 navView.visibility = View.VISIBLE
             } else {

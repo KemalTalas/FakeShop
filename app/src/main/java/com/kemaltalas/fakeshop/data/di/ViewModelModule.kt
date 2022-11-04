@@ -1,11 +1,12 @@
 package com.kemaltalas.fakeshop.data.di
 
 import android.app.Application
+import com.kemaltalas.fakeshop.data.util.SharedPrefs
+import com.kemaltalas.fakeshop.domain.usecase.AuthUseCase
 import com.kemaltalas.fakeshop.domain.usecase.FavoritesUseCase
 import com.kemaltalas.fakeshop.domain.usecase.ProductUseCase
-import com.kemaltalas.fakeshop.presentation.viewmodels.DetailViewModel
-import com.kemaltalas.fakeshop.presentation.viewmodels.FavoritesViewModel
-import com.kemaltalas.fakeshop.presentation.viewmodels.HomeViewModel
+import com.kemaltalas.fakeshop.domain.usecase.UserUseCase
+import com.kemaltalas.fakeshop.presentation.viewmodels.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -32,6 +33,18 @@ class ViewModelModule {
     @Provides
     fun providesDetailsViewModel(favoritesUseCase: FavoritesUseCase) : DetailViewModel{
         return DetailViewModel(favoritesUseCase)
+    }
+
+    @Singleton
+    @Provides
+    fun providesUserViewModel(userUseCase: UserUseCase,sharedPrefs: SharedPrefs) : UserViewModel{
+        return UserViewModel(userUseCase,sharedPrefs)
+    }
+
+    @Singleton
+    @Provides
+    fun providesAuthViewModel(authUseCase: AuthUseCase) : AuthViewModel{
+        return AuthViewModel(authUseCase)
     }
 
 }

@@ -1,6 +1,302 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_register"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        android:gravity="center_horizontal"
+        android:layout_marginStart="120dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:logo="@drawable/home_toolbar_logo"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:title="FakeShop"
+        app:titleTextColor="@color/teal_700"
+        app:titleMarginStart="20dp"/>
+
+    <ImageView
+        android:id="@+id/register_backbutton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/back_ic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_register">
+
+        <LinearLayout
+            android:id="@+id/register_linearlayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/register_til_firstname"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="5dp"
+                android:hint="First Name"
+                app:helperText="Required*"
+                app:helperTextTextColor="#FF0000"
+                app:endIconMode="clear_text"
+                app:counterEnabled="true"
+                app:counterMaxLength="20">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/register_tie_firstname"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/register_til_lastname"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="5dp"
+                android:hint="Last Name"
+                app:helperText="Required*"
+                app:helperTextTextColor="#FF0000"
+                app:endIconMode="clear_text"
+                app:counterEnabled="true"
+                app:counterMaxLength="12">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/register_tie_lastname"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/register_til_username"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="10dp"
+            android:hint="Username"
+            app:endIconMode="clear_text"
+            app:helperText="Required*"
+            app:helperTextTextColor="#FF0000"
+            app:counterEnabled="true"
+            app:counterMaxLength="20"
+            app:counterTextColor="@color/colorGrey"
+            app:startIconDrawable="@drawable/person_ic"
+            tools:layout_editor_absoluteY="256dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/register_tie_username"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/register_til_password"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="5dp"
+            android:hint="Password"
+            app:helperText="Required*"
+            app:helperTextTextColor="#FF0000"
+            app:endIconMode="custom"
+            app:endIconTintMode="multiply"
+            app:endIconCheckable="true"
+            app:startIconDrawable="@android:drawable/ic_lock_idle_lock">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/register_tie_password"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/register_til_email"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="5dp"
+            android:hint="E-mail"
+            app:helperText="Required*"
+            app:helperTextTextColor="#FF0000"
+            app:endIconMode="custom"
+            app:endIconTintMode="multiply"
+            app:endIconTint="#00AD6E"
+            app:startIconDrawable="@android:drawable/sym_action_email"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@drawable/error_ic">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/register_tie_email"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/register_til_confirmemail"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="5dp"
+            android:hint="Confirm e-mail"
+            app:helperText="Required*"
+            app:helperTextTextColor="#FF0000"
+            app:endIconMode="custom"
+            app:endIconTintMode="multiply"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@drawable/error_ic"
+            app:startIconDrawable="@android:drawable/sym_action_email">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/register_tie_confirmemail"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/register_til_phone"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="5dp"
+            android:hint="Phone"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@drawable/error_ic"
+            app:helperText="Required*"
+            app:helperTextTextColor="#FF0000"
+            app:startIconDrawable="@android:drawable/stat_sys_phone_call">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/register_tie_phone"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:inputType="phone"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/register_til_city"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="5dp"
+            android:hint="City"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@drawable/error_ic"
+            app:helperText="Required*"
+            app:helperTextTextColor="#FF0000">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/register_tie_city"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/register_til_country"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="5dp"
+            android:hint="Country"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@drawable/error_ic"
+            app:helperText="Required*"
+            app:helperTextTextColor="#FF0000">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/register_tie_country"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/register_til_addressline"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="15dp"
+            android:hint="Address line"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@drawable/error_ic"
+            app:counterMaxLength="160"
+            app:counterEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/register_tie_addressline"
+                android:layout_width="match_parent"
+                android:layout_height="70dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/register_securequestion"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center_vertical"
+            android:text="What is your favorite animal?"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/register_til_secureanswer"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="5dp"
+            android:windowSoftInputMode = "adjustPan"
+            android:hint="Your Answer"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@drawable/error_ic"
+            android:textAlignment="textStart">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/register_tie_secureanswer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/register_button"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="80dp"
+                android:text="REGISTER"
+                android:textSize="20sp"/>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,8 +2,7 @@ package com.kemaltalas.fakeshop.domain.implementation
 
 import androidx.lifecycle.LiveData
 import com.kemaltalas.fakeshop.data.local.FakeShopDao
-import com.kemaltalas.fakeshop.data.model.CartItems
-import com.kemaltalas.fakeshop.data.model.Product
+import com.kemaltalas.fakeshop.data.model.*
 import com.kemaltalas.fakeshop.data.remote.ApiService
 import com.kemaltalas.fakeshop.data.util.Resource
 import com.kemaltalas.fakeshop.domain.repository.FakeShopRepository
@@ -57,12 +56,36 @@ class FakeShopRepositoryImp @Inject constructor(
         return localDataSource.deleteFavoritesItem(product)
     }
 
+    override suspend fun updateFavorites(product: Product) {
+        return localDataSource.updateFavoritesItem(product)
+    }
+
     override fun getFavoriteItems(): LiveData<List<Product>> {
         return localDataSource.getFavoritesItems()
     }
 
     override suspend fun clearAllFavorites() {
         return localDataSource.clearAllFavorites()
+    }
+
+    override suspend fun loginUser(user: User): Resource<Token> {
+        return responseToLogin(remoteDataSource.loginUser(user))
+    }
+
+    override suspend fun registerUser(userDetails: UserDetails) {
+        return localDataSource.registerUser(userDetails)
+    }
+
+    override suspend fun updateUser(userDetails: UserDetails) {
+        return localDataSource.updateUser(userDetails)
+    }
+
+    override fun getUserDetails(): LiveData<UserDetails> {
+        return localDataSource.getUserDetails()
+    }
+
+    override suspend fun deleteAllUsers() {
+        return localDataSource.deleteAllUsers()
     }
 
     private fun responseToProductResult(response: Response<Product>) : Resource<Product>{
@@ -98,6 +121,15 @@ class FakeShopRepositoryImp @Inject constructor(
             }
         }
         return Resource.Error(message = "Error In Categories")
+    }
+
+    private fun responseToLogin(response: Response<Token>) : Resource<Token>{
+        if (response.isSuccessful){
+            response.body()?.let {
+                return Resource.Success(it)
+            }
+        }
+        return Resource.Error(message = "Error in Login")
     }
 
 

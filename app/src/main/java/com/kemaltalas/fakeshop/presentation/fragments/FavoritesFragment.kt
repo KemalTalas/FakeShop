@@ -47,6 +47,12 @@ class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
             findNavController().navigate(action)
         }
 
+        binding.toolbarFavorites.setOnClickListener {
+            for (i in adapter.recyclerListDiffer.currentList){
+                println(i.isFavorited)
+            }
+        }
+
 
 
     }

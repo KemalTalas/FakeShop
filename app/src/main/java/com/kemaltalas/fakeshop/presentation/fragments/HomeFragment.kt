@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.facebook.shimmer.Shimmer
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.kemaltalas.fakeshop.R
+import com.kemaltalas.fakeshop.data.model.Product
 import com.kemaltalas.fakeshop.data.util.Resource
 import com.kemaltalas.fakeshop.databinding.FragmentHomeBinding
 import com.kemaltalas.fakeshop.presentation.adapters.HomeAdapter
@@ -96,6 +97,14 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         binding.homeWomensclothingButton.setOnClickListener {
             findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProductFragment("women's clothing"))
         }
+
+        binding.toolbarHome.setOnClickListener {
+            for (i in adapter.products){
+                println(i.isFavorited)
+            }
+        }
+
+
     }
 
 }

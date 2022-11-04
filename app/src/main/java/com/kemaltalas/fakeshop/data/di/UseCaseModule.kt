@@ -1,8 +1,10 @@
 package com.kemaltalas.fakeshop.data.di
 
 import com.kemaltalas.fakeshop.domain.repository.FakeShopRepository
+import com.kemaltalas.fakeshop.domain.usecase.AuthUseCase
 import com.kemaltalas.fakeshop.domain.usecase.FavoritesUseCase
 import com.kemaltalas.fakeshop.domain.usecase.ProductUseCase
+import com.kemaltalas.fakeshop.domain.usecase.UserUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,6 +24,18 @@ class UseCaseModule {
     @Provides
     fun providesFavoritesUseCase(repository: FakeShopRepository) : FavoritesUseCase{
         return FavoritesUseCase(repository)
+    }
+
+    @Singleton
+    @Provides
+    fun providesUserUseCase(repository: FakeShopRepository) : UserUseCase{
+        return UserUseCase(repository)
+    }
+
+    @Singleton
+    @Provides
+    fun providesAuthUseCase(repository: FakeShopRepository) : AuthUseCase{
+        return AuthUseCase(repository)
     }
 
 }

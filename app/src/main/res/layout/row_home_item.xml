@@ -72,6 +72,13 @@
                         android:textStyle="bold"
                         android:textSize="25sp"/>
 
+                    <ImageView
+                        android:id="@+id/home_favorite_ic"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/not_favorited_ic"
+                        android:layout_marginStart="60dp"/>
+
 
                 </LinearLayout>
 

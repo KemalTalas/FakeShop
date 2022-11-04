@@ -53,22 +53,32 @@ class DetailScreenFragment : Fragment(R.layout.fragment_detail_screen) {
 
         loadViews()
 
+
+        binding.detailFav.apply {
+            if (product.isFavorited){
+                setImageResource(R.drawable.favorited_ic)
+            }else{
+                setImageResource(R.drawable.not_favorited_ic)
+            }
+        }
+
         binding.detailFav.setOnClickListener {
-            if (liked){
-                liked = false
+            if (product.isFavorited){
                 viewModel.deleteFavorites(product)
+                product.isFavorited = false
+                viewModel.updateFavoritesItem(product,false)
                 binding.detailFav.setImageResource(R.drawable.not_favorited_ic)
                 Snackbar.make(binding.detailCheckoutButton,"Removed from wishlist",Snackbar.LENGTH_SHORT).show()
             }else{
-                liked = true
                 viewModel.addFavorites(product)
+                product.isFavorited = true
+                viewModel.updateFavoritesItem(product,true)
                 binding.detailFav.setImageResource(R.drawable.favorited_ic)
                 Snackbar.make(binding.detailCheckoutButton,"Added to wishlist",Snackbar.LENGTH_SHORT).show()
             }
         }
 
         binding.detailCheckoutButton.setOnClickListener {
-//            viewModel.addToCart(cartItems)
 
             Snackbar.make(binding.detailCheckoutButton,"Added To Cart",Snackbar.LENGTH_SHORT).show()
             cartItems = CartItems(product.id,product.image,product.title,product.price,1)
@@ -91,13 +101,7 @@ class DetailScreenFragment : Fragment(R.layout.fragment_detail_screen) {
                 .load(product.image)
                 .into(it.detailItemImage)
 
-//            if (adapter.listDiffer.currentList.contains(product)){
-//                it.detailFav.visibility = View.VISIBLE
-//                it.detailUnfav.visibility = View.INVISIBLE
-//            }else{
-//                it.detailUnfav.visibility = View.VISIBLE
-//                it.detailFav.visibility = View.INVISIBLE
-//            }
+
         }
 
 

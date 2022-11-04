@@ -1,8 +1,7 @@
 package com.kemaltalas.fakeshop.domain.repository
 
 import androidx.lifecycle.LiveData
-import com.kemaltalas.fakeshop.data.model.CartItems
-import com.kemaltalas.fakeshop.data.model.Product
+import com.kemaltalas.fakeshop.data.model.*
 import com.kemaltalas.fakeshop.data.util.Resource
 import retrofit2.Response
 
@@ -23,7 +22,18 @@ interface FakeShopRepository {
     //Local Data Favorites Functions
     suspend fun addToFavorites(product: Product)
     suspend fun deleteFavorites(product: Product)
+    suspend fun updateFavorites(product: Product)
     fun getFavoriteItems() : LiveData<List<Product>>
     suspend fun clearAllFavorites()
+
+    //Login
+    suspend fun loginUser(user: User) : Resource<Token>
+
+    //User
+    suspend fun registerUser(userDetails: UserDetails)
+    suspend fun updateUser(userDetails: UserDetails)
+    fun getUserDetails() : LiveData<UserDetails>
+    suspend fun deleteAllUsers()
+
 
 }

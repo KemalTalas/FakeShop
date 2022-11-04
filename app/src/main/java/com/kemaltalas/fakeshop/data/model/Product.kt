@@ -20,6 +20,7 @@ data class Product(
     val price: String,
     @SerializedName("title")
     val title: String,
+    var isFavorited : Boolean
 //    @SerializedName("rating")
 //    val rating: String
 

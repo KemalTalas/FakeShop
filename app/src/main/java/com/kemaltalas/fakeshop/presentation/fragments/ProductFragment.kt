@@ -218,6 +218,12 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
             }
 
 
+        binding.toolbarProducts.setOnClickListener {
+            for (i in list){
+                println(i.isFavorited)
+            }
+        }
+
         binding.productsSearchView.setOnQueryTextListener( object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 hideKeyboards()

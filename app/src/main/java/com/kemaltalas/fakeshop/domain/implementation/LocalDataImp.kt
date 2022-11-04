@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import com.kemaltalas.fakeshop.data.local.FakeShopDao
 import com.kemaltalas.fakeshop.data.model.CartItems
 import com.kemaltalas.fakeshop.data.model.Product
+import com.kemaltalas.fakeshop.data.model.UserDetails
 import com.kemaltalas.fakeshop.domain.repository.LocalDataSource
 import javax.inject.Inject
 
@@ -39,8 +40,28 @@ class LocalDataImp @Inject constructor(
         return dao.deleteFavorites(product)
     }
 
+    override suspend fun updateFavoritesItem(product: Product) {
+        return dao.updateFavorites(product)
+    }
+
     override suspend fun clearAllFavorites() {
         return dao.clearAllFavorites()
+    }
+
+    override suspend fun registerUser(userDetails: UserDetails) {
+        return dao.registerUser(userDetails)
+    }
+
+    override suspend fun updateUser(userDetails: UserDetails) {
+        return dao.updateUser(userDetails)
+    }
+
+    override fun getUserDetails(): LiveData<UserDetails> {
+        return dao.getUserDetail()
+    }
+
+    override suspend fun deleteAllUsers() {
+        return dao.deleteAllUser()
     }
 
 

@@ -20,6 +20,10 @@ class FavoritesUseCase @Inject constructor(
         return repository.deleteFavorites(product)
     }
 
+    suspend fun updateFavorites(product: Product){
+        return repository.updateFavorites(product)
+    }
+
     suspend fun clearFavoritesItems(){
         return repository.clearAllFavorites()
     }
