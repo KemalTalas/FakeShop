@@ -16,7 +16,10 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ProductsViewHolder>
     inner class ProductsViewHolder(private val binding: RowProductsBinding) : RecyclerView.ViewHolder(binding.root){
         fun bindItem(product: Product){
             binding.rowProductTitle.text = product.title
-            binding.rowProductPrice.text = "$${product.price}"
+            binding.rowProductPrice.text = "$${String.format("%.2f",product.price.toDouble())}"
+            binding.rowProductDesc.text = product.description.replaceFirstChar { it.uppercase() }
+            binding.rowProductComments.text = "(${product.rating.count})"
+            binding.rowProductRating.rating = product.rating.rate.toFloat()
 
             Glide.with(binding.rowProductImage)
                 .load(product.image)

@@ -1,6 +1,7 @@
 package com.kemaltalas.fakeshop.presentation.adapters
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -21,7 +22,10 @@ class BasketAdapter : RecyclerView.Adapter<BasketAdapter.BasketViewHolder>() {
 
         fun bindItems(cartItems: CartItems){
             binding.homeRvItemName.text = cartItems.title
-            binding.homeRvItemPrice.text = "$${cartItems.price}"
+            binding.homeRvItemPrice.text = "$${String.format("%.2f",cartItems.price.toDouble())}"
+            binding.homeRvItemDesc.text = cartItems.description
+            binding.homeRatingbar.rating = cartItems.rate.rate.toFloat()
+            binding.homeComments.text = "(${cartItems.rate.count})"
 
             Glide.with(binding.homeRvImage)
                 .load(cartItems.image)
@@ -39,10 +43,8 @@ class BasketAdapter : RecyclerView.Adapter<BasketAdapter.BasketViewHolder>() {
 
     }
 
-    private var onItemClickListener : ((CartItems)-> Unit) = {}
-    fun setOnItemClickListener(listener: (CartItems) -> Unit){
-        onItemClickListener = listener
-    }
+
+
 
      private val diffUtil = object : DiffUtil.ItemCallback<CartItems>(){
         override fun areItemsTheSame(oldItem: CartItems, newItem: CartItems): Boolean {

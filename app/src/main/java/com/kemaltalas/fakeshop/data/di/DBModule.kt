@@ -4,8 +4,10 @@ import android.app.Application
 import android.content.Context
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.google.gson.Gson
 import com.kemaltalas.fakeshop.data.local.FakeShopDao
 import com.kemaltalas.fakeshop.data.local.FakeShopDatabase
+import com.kemaltalas.fakeshop.data.util.Converters
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -21,8 +23,9 @@ class DBModule {
 
     @Singleton
     @Provides
-    fun providesDatabase(app : Application) : FakeShopDatabase{
+    fun providesDatabase(app : Application, gson: Gson) : FakeShopDatabase{
         return Room.databaseBuilder(app,FakeShopDatabase::class.java,"FakeShopDB")
+            .addTypeConverter(Converters(gson))
             .fallbackToDestructiveMigration()
             .build()
     }

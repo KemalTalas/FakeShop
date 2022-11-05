@@ -24,4 +24,8 @@ class ProductUseCase @Inject constructor(
         return repository.getUserDetails()
     }
 
+     fun getFavorites() : LiveData<List<Product>> {
+        return repository.getFavoriteItems()
+    }
+
 }

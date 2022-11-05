@@ -1,6 +1,4 @@
 package com.kemaltalas.fakeshop.data.model
-
-import android.icu.text.CaseMap
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
@@ -20,8 +18,9 @@ data class Product(
     val price: String,
     @SerializedName("title")
     val title: String,
-    var isFavorited : Boolean
-//    @SerializedName("rating")
-//    val rating: String
+    var isFavorited : Boolean,
+    @SerializedName("rating")
+    val rating: Rate
 
 ) : java.io.Serializable
+

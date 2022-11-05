@@ -1,6 +1,9 @@
 package com.kemaltalas.fakeshop.presentation.fragments
 
+import android.content.Context
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.text.Html
 import android.text.SpannableString
 import android.text.SpannableStringBuilder
@@ -16,6 +19,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.widget.SearchView
+import androidx.core.animation.doOnEnd
 import androidx.core.text.HtmlCompat
 import androidx.core.text.HtmlCompat.FROM_HTML_MODE_LEGACY
 import androidx.core.text.bold
@@ -61,37 +65,53 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         viewModel.getAllProducts()
 
-        viewModel.user.observe(viewLifecycleOwner){
-            try {
+
+
+        val firstLine = "Welcome Guest,\n"
+        val secondLineClick = object : ClickableSpan(){
+            override fun onClick(widget: View) {
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToLoginFragment())
+            }
+        }
+        val secondLine = SpannableString("Please login for more enjoyable shopping")
+        secondLine.setSpan(secondLineClick,7, 12, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+
+
+        viewModel.user.observe(viewLifecycleOwner) {
+            if (isLogged() && it != null) {
                 val firstLine = SpannableStringBuilder()
                     .append("Welcome ")
                     .bold { append(it.firstname.replaceFirstChar { it.uppercase() }) }
                 val secondLine = SpannableStringBuilder()
                     .append("\nShipping To: ")
-                    .bold { append(it.city.replaceFirstChar { it.uppercase() }+"/"+it.country.replaceFirstChar { it.uppercase() }) }
+                    .bold { append(it.city.replaceFirstChar { it.uppercase() } + "/" + it.country.replaceFirstChar { it.uppercase() }) }
 
                 binding.homeWelcomeTv.setText(firstLine)
                 binding.homeWelcomeTv.append(secondLine)
-            }catch (e: Exception){
-                val firstLine = "Welcome Guest,\n"
-                val secondLineClick = object : ClickableSpan(){
-                    override fun onClick(widget: View) {
-                        findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToLoginFragment())
-                    }
-                }
-                val secondLine = SpannableString("Please login for more enjoyable shopping")
-                secondLine.setSpan(secondLineClick,0, secondLine.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-                binding.homeWelcomeTv.setText(firstLine,TextView.BufferType.SPANNABLE)
+
+            } else {
+
+                binding.homeWelcomeTv.setText(firstLine, TextView.BufferType.SPANNABLE)
                 binding.homeWelcomeTv.append(secondLine)
                 binding.homeWelcomeTv.movementMethod = LinkMovementMethod.getInstance()
-                Log.e("Error",e.stackTraceToString())
             }
+
         }
 
 
         viewModel.products.observe(viewLifecycleOwner){
             when(it){
                 is Resource.Success -> {
+                    viewModel.favorites.observe(viewLifecycleOwner){ favorites ->
+                        it.data?.forEach { product ->
+                            favorites.forEach { favitem ->
+                                if (product == favitem){
+                                    product.isFavorited = true
+                                }
+                            }
+                        }
+                    }
                     adapter.recyclerListDiffer.submitList(it.data)
                     shimmer.stopShimmer()
                     binding.shimmer.visibility = View.GONE
@@ -102,7 +122,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                     shimmer.showShimmer(true)
                 }
                 is Resource.Error -> {
-                    Log.i("HomeFragment","Error At Home")
+                    Log.i("HomeFragment",it.message.toString())
+                    Handler(Looper.myLooper()!!).postDelayed({
+                        onDestroy()
+                    },3000)
                 }
             }
         }
@@ -134,13 +157,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProductFragment("women's clothing"))
         }
 
-        binding.toolbarHome.setOnClickListener {
-            for (i in adapter.products){
-                println(i.isFavorited)
-            }
-        }
 
+    }
 
+    fun isLogged() : Boolean{
+        val sharedprefs = requireActivity().getSharedPreferences("isLoggedIn",Context.MODE_PRIVATE)
+        return sharedprefs.getBoolean("isLogged",false)
     }
 
 }

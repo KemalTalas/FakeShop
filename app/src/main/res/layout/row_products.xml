@@ -1,54 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="185dp"
+    android:layout_height="280dp"
     android:layout_margin="5dp"
     android:id="@+id/product_row_item"
+    android:background="@drawable/row_home_bg"
+    android:elevation="3dp"
+    android:baselineAligned="false"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="180dp"
-        android:layout_height="265dp"
-        app:cardCornerRadius="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_horizontal"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:baselineAligned="false"
+            android:background="@drawable/row_product_bg">
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/row_product_image"
-                android:layout_width="120dp"
-                android:layout_height="150dp"
-                android:padding="5dp"
-                android:layout_marginTop="5dp"/>
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:background="@color/white"
+                android:layout_margin="1dp"
+                android:padding="10dp"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.RowProduct"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:baselineAligned="false"
+                android:paddingStart="5dp"
+                android:background="@drawable/row_home_bg">
 
             <TextView
                 android:id="@+id/row_product_title"
-                android:layout_width="160dp"
-                android:layout_height="55dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="30dp"
                 android:layout_marginTop="10dp"
+                android:paddingHorizontal="5dp"
                 android:text="ITEM NAME"
-                android:textColor="@color/black"
-                android:textAlignment="center"/>
+                android:textStyle="bold"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/row_product_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minHeight="30dp"
+                    android:layout_marginTop="5dp"
+                    android:paddingHorizontal="5dp"
+                    android:text="ITEM DESC"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:visibility="visible"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp"
+                    android:paddingStart="5dp">
+                <RatingBar
+                    android:id="@+id/row_product_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:rating="3"
+                    android:layout_gravity="center_vertical"
+                    style="@style/Widget.AppCompat.RatingBar.Small" />
+
+                    <TextView
+                        android:id="@+id/row_product_comments"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="(30)"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"/>
+
+                </LinearLayout>
 
             <TextView
                 android:id="@+id/row_product_price"
                 android:layout_width="160dp"
-                android:layout_height="30dp"
-                android:layout_gravity="end"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
+                android:paddingStart="5dp"
                 android:text="$0000.00"
-                android:textAlignment="textEnd"
-                android:textSize="25sp"
-                android:textColor="@color/teal_700"/>
+                android:textSize="20sp"
+                android:elevation="15dp"
+                android:paddingBottom="10dp"
+                android:layout_gravity="bottom"
+                android:gravity="bottom"
+                android:textColor="@color/teal_700" />
+            </LinearLayout>
 
         </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

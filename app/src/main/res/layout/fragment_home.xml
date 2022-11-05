@@ -4,53 +4,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F1F1F1">
+    android:background="#F8F8F8">
 
-    <TextView
-        android:id="@+id/home_welcome_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="62dp"
-        android:elevation="1dp"
-        android:text=""
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_home"
+    <LinearLayout
+        android:id="@+id/home_top"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="#F1F1F1"
-        android:gravity="center_horizontal"
-        android:layout_marginStart="120dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:logo="@drawable/home_toolbar_logo"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:title="FakeShop"
-        app:titleTextColor="@color/teal_700"
-        app:titleMarginStart="20dp">
-    </androidx.appcompat.widget.Toolbar>
+        android:layout_height="wrap_content"
+        android:background="@drawable/userpanel_bg"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent">
 
+        <TextView
+            android:id="@+id/home_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/sergio_trendy"
+            android:text="FakeShop"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/home_welcome_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+    </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
+        android:id="@+id/nestedscroll"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
         android:scrollbars="none"
-        app:layout_constraintTop_toBottomOf="@+id/home_welcome_tv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="166dp">
+        app:layout_constraintTop_toBottomOf="@+id/home_top">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="#F8F8F8">
 
             <TextView
                 android:id="@+id/textView"
@@ -58,6 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="5dp"
+                android:layout_marginStart="20dp"
                 android:text="Categories" />
 
             <HorizontalScrollView
@@ -69,6 +75,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginVertical="10dp"
+                    android:layout_marginStart="20dp"
                     android:orientation="horizontal">
 
                     <androidx.cardview.widget.CardView
@@ -80,7 +87,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="#B001579B"
+                            android:background="#B09B0101"
                             android:gravity="center"
                             android:orientation="vertical">
 
@@ -88,7 +95,7 @@
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:layout_gravity="center"
-                                android:src="@drawable/all_ic" />
+                                android:src="@drawable/categories_icon" />
 
                             <TextView
                                 style="@style/CategoriesButton"
@@ -105,7 +112,7 @@
                         android:id="@+id/home_electronics_button"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:layout_marginStart="20dp"
+                        android:layout_marginStart="15dp"
                         app:cardCornerRadius="8dp">
 
                         <LinearLayout
@@ -119,7 +126,7 @@
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:layout_gravity="center"
-                                android:src="@drawable/electronics_ic" />
+                                android:src="@drawable/computer_desktop_icon" />
 
                             <TextView
                                 style="@style/CategoriesButton"
@@ -136,7 +143,7 @@
                         android:id="@+id/home_jewelery_button"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:layout_marginStart="20dp"
+                        android:layout_marginStart="15dp"
                         app:cardCornerRadius="8dp">
 
                         <LinearLayout
@@ -150,7 +157,7 @@
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:layout_gravity="center"
-                                android:src="@drawable/jewelery_ic" />
+                                android:src="@drawable/diamond_ring_icon" />
 
                             <TextView
                                 style="@style/CategoriesButton"
@@ -167,7 +174,7 @@
                         android:id="@+id/home_mensclothing_button"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:layout_marginStart="20dp"
+                        android:layout_marginStart="15dp"
                         app:cardCornerRadius="8dp">
 
                         <LinearLayout
@@ -181,7 +188,7 @@
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:layout_gravity="center"
-                                android:src="@drawable/man_ic" />
+                                android:src="@drawable/men_suit_icon" />
 
                             <TextView
                                 style="@style/CategoriesButton"
@@ -198,7 +205,8 @@
                         android:id="@+id/home_womensclothing_button"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:layout_marginStart="20dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="15dp"
                         app:cardCornerRadius="8dp">
 
                         <LinearLayout
@@ -213,7 +221,7 @@
                                 android:layout_height="50dp"
                                 android:layout_gravity="center_vertical|center_horizontal"
                                 android:foregroundGravity="center"
-                                android:src="@drawable/women_ic" />
+                                android:src="@drawable/dress_icon" />
 
                             <TextView
                                 style="@style/CategoriesButton"
@@ -226,6 +234,11 @@
 
                     </androidx.cardview.widget.CardView>
 
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="50dp"
+                        android:background="#F1F1F1"/>
+
                 </LinearLayout>
 
             </HorizontalScrollView>
@@ -236,6 +249,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
                 android:text="Top Products" />
 
             <com.facebook.shimmer.ShimmerFrameLayout
@@ -246,7 +260,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_marginHorizontal="10dp">
 
                     <include layout="@layout/shimmer_layout" />
 
@@ -270,8 +285,13 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="60dp"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent" />
+                android:layout_marginHorizontal="12dp"
+                android:visibility="gone" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="140dp"
+                android:background="#F8F8F8"/>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

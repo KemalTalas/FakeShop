@@ -8,7 +8,7 @@ import com.kemaltalas.fakeshop.data.model.Product
 import com.kemaltalas.fakeshop.data.model.UserDetails
 import com.kemaltalas.fakeshop.data.util.Converters
 
-@Database(entities = [Product::class,CartItems::class,UserDetails::class], version = 7, exportSchema = true)
+@Database(entities = [Product::class,CartItems::class,UserDetails::class], version = 10, exportSchema = true)
 @TypeConverters(Converters::class)
 abstract class FakeShopDatabase : RoomDatabase() {
     abstract fun fakeShopDao() : FakeShopDao

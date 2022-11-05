@@ -22,6 +22,8 @@ class HomeViewModel @Inject constructor(
 
     val user : LiveData<UserDetails> = productUseCase.getUsername()
 
+    val favorites : LiveData<List<Product>> = productUseCase.getFavorites()
+
     fun getAllProducts() = viewModelScope.launch {
        try {
            products.postValue(Resource.Loading())

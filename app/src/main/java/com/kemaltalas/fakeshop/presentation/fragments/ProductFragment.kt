@@ -83,6 +83,7 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
 
         binding.productsRecycler.adapter = adapter
         binding.productsRecycler.layoutManager = GridLayoutManager(requireContext(),2,GridLayoutManager.VERTICAL,false)
+        binding.productsRecycler
 
         adapter.setOnItemClickListener {
             val action = ProductFragmentDirections.actionProductFragmentToDetailScreenFragment(it)
@@ -101,7 +102,7 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
         var adbIndex = 0
         var selectedItem = ""
         binding.productsPage.setOnClickListener { hideKeyboards() }
-        binding.toolbarProducts.setOnClickListener { hideKeyboards() }
+        binding.productsTop.setOnClickListener { hideKeyboards() }
 
 //        viewModel.getCategoryProducts(categoryName)
 
@@ -218,12 +219,6 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
             }
 
 
-        binding.toolbarProducts.setOnClickListener {
-            for (i in list){
-                println(i.isFavorited)
-            }
-        }
-
         binding.productsSearchView.setOnQueryTextListener( object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 hideKeyboards()
@@ -234,7 +229,7 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
                 viewModel.products.observe(viewLifecycleOwner){
                     var searchedList = it.data?.filter { it.title.contains(newText.toString(),ignoreCase = true)}
                     adapter.recyclerListDiffer.submitList(searchedList)
-                    if (searchedList.isNullOrEmpty() || searchedList.size==0 || searchedList.size > 19){
+                    if (searchedList.isNullOrEmpty() || searchedList.size > 19){
                         binding.productsResultTv.visibility = View.GONE
                     }else if(searchedList.size >0){
                         binding.productsResultTv.visibility = View.VISIBLE

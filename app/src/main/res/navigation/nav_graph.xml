@@ -46,7 +46,11 @@
     <fragment
         android:id="@+id/userPanelFragment"
         android:name="com.kemaltalas.fakeshop.presentation.fragments.UserPanelFragment"
-        android:label="UserPanelFragment" />
+        android:label="UserPanelFragment" >
+        <action
+            android:id="@+id/action_userPanelFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.kemaltalas.fakeshop.presentation.fragments.LoginFragment"

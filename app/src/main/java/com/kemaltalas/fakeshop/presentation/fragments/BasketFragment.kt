@@ -13,6 +13,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.kemaltalas.fakeshop.R
 import com.kemaltalas.fakeshop.data.model.CartItems
 import com.kemaltalas.fakeshop.data.model.Product
+import com.kemaltalas.fakeshop.data.model.Rate
 import com.kemaltalas.fakeshop.databinding.FragmentBasketBinding
 import com.kemaltalas.fakeshop.databinding.RowHomeItemBinding
 import com.kemaltalas.fakeshop.presentation.adapters.BasketAdapter
@@ -57,10 +58,19 @@ class BasketFragment : Fragment(R.layout.fragment_basket) {
         binding.basketCheckoutLayout.visibility = View.VISIBLE
 
         viewModel.totalItemsPrice.observe(viewLifecycleOwner){
-           binding.basketPrice.text = "$${it.toString()}"
-//            binding.basketPrice.setText(it.toString())
+           binding.basketPrice.text = "$${String.format("%.2f",it)}"
+
+            if (it == 0.0){
+                binding.basketRecyclerview.visibility = View.INVISIBLE
+                binding.basketTextView.visibility = View.VISIBLE
+            }else{
+                binding.basketRecyclerview.visibility = View.VISIBLE
+                binding.basketTextView.visibility = View.INVISIBLE
+            }
+
             binding.root.invalidate()
         }
+
 
     }
 
@@ -74,11 +84,10 @@ class BasketFragment : Fragment(R.layout.fragment_basket) {
         }
 
         override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-            val layoutPos = viewHolder.layoutPosition
-            val selectedItem = adapter.listDiffer.currentList[layoutPos]
+            val layoutPos = viewHolder.layoutPosition;
+            val selectedItem = adapter.listDiffer.currentList[layoutPos];
                 viewModel.deleteFromCart(selectedItem)
         }
-
     }
 
 }

@@ -2,6 +2,7 @@ package com.kemaltalas.fakeshop.presentation.fragments
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
@@ -81,11 +82,10 @@ class DetailScreenFragment : Fragment(R.layout.fragment_detail_screen) {
         binding.detailCheckoutButton.setOnClickListener {
 
             Snackbar.make(binding.detailCheckoutButton,"Added To Cart",Snackbar.LENGTH_SHORT).show()
-            cartItems = CartItems(product.id,product.image,product.title,product.price,1)
+            cartItems = CartItems(product.id,product.image,product.description,product.rating,product.title,product.price,1)
             viewModel.addToCart(cartItems)
 
         }
-
 
 
     }

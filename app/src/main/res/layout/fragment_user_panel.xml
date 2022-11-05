@@ -1,63 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@drawable/userpanel_bg">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_userpanel"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/white"
-        android:gravity="center_horizontal"
-        android:layout_marginStart="120dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:logo="@drawable/home_toolbar_logo"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:title="FakeShop"
-        app:titleTextColor="@color/teal_700"
-        app:titleMarginStart="20dp"/>
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/userpanel_imageview"
         android:layout_width="150dp"
         android:layout_height="150dp"
+        android:layout_gravity="center"
         android:layout_marginTop="60dp"
-        android:src="@drawable/person_ic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_userpanel"
+        android:background="@color/white"
+        android:outlineSpotShadowColor="@color/white"
+        android:elevation="85dp"
+        android:padding="2dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/freddieavatar"
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
-        app:strokeColor="@color/teal_700"
-        app:strokeWidth="2dp" />
+        app:strokeColor="@color/teal_200"
+        app:strokeWidth="4dp" />
 
     <TextView
-        android:id="@+id/userpanel_username_tv"
+        android:id="@+id/userpanel_firstlastname_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="USER NAME SURNAME"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userpanel_imageview" />
+        android:textColor="@color/white"
+        android:layout_gravity="center"/>
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/userpanel_username_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="5dp"
+        android:text="'@'Username"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:layout_gravity="center"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="70dp"
         android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userpanel_username_tv">
+        android:background="@drawable/row_home_bg">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
             android:clickable="true"
             android:gravity="center_vertical"
             android:orientation="horizontal">
@@ -74,10 +76,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
+                android:minWidth="260dp"
                 android:text="Edit Profile"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/next_ic"
+                android:layout_gravity="top" />
 
 
         </LinearLayout>
@@ -105,8 +115,16 @@
                 android:layout_marginStart="30dp"
                 android:text="Change Password"
                 android:textColor="@color/black"
+                android:minWidth="260dp"
                 android:textSize="16sp"
                 android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/next_ic"
+                android:layout_gravity="top" />
 
 
         </LinearLayout>
@@ -133,9 +151,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:text="Notifications"
+                android:minWidth="230dp"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:checked="false"
+                style="@style/Widget.App.Switch"/>
 
 
         </LinearLayout>
@@ -146,7 +171,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:clickable="true"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -163,52 +187,23 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:text="Log Out"
+                android:minWidth="260dp"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/next_ic"
+                android:layout_gravity="top" />
 
 
         </LinearLayout>
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="15dp"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userpanel_username_tv">
-
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/next_ic"
-            android:layout_marginTop="10dp"/>
-
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/next_ic"
-            android:layout_marginTop="30dp"/>
-
-        <com.google.android.material.switchmaterial.SwitchMaterial
-            android:layout_width="60dp"
-            android:layout_height="30dp"
-            android:checked="false"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="-6dp"/>
-
-        <ImageView
-            android:id="@+id/up_logout_img"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/next_ic"
-            android:layout_marginTop="30dp"/>
-
-    </LinearLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

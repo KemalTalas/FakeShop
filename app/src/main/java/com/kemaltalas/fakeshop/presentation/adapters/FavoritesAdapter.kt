@@ -16,8 +16,10 @@ class FavoritesAdapter : RecyclerView.Adapter<FavoritesAdapter.FavoritesViewHold
     inner class FavoritesViewHolder(private val binding: RowHomeItemBinding) : RecyclerView.ViewHolder(binding.root){
         fun bindItem(product: Product){
             binding.homeRvItemName.text = product.title
-            binding.homeRvItemPrice.text = "$${product.price}"
-            binding.homeRvItemDesc.text = product.description
+            binding.homeRvItemPrice.text = "$${String.format("%.2f",product.price.toDouble())}"
+            binding.homeRvItemDesc.text = product.description.replaceFirstChar { it.uppercase() }
+            binding.homeRatingbar.rating = product.rating.rate.toFloat()
+            binding.homeComments.text = "(${product.rating.count})"
 
             Glide.with(binding.homeRvImage)
                 .load(product.image)

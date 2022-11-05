@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="200dp"
+    android:elevation="5dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
@@ -9,78 +10,104 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:cardCornerRadius="20dp"
-        app:cardBackgroundColor="@color/white"
-        android:layout_marginVertical="7dp"
-        >
+        android:background="@drawable/row_home_bg"
+        android:layout_marginVertical="7dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:background="@drawable/row_home_bg">
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/home_rv_image"
                 android:layout_width="150dp"
                 android:layout_height="match_parent"
                 android:src="@drawable/ic_launcher_foreground1"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.RowHomeF"
+                android:layout_margin="1dp"
+                android:cropToPadding="true"
+                app:contentPadding="30dp"
+                android:background="@color/white"
                 android:maxWidth="100dp"
-                android:maxHeight="100dp"
-                android:padding="10dp"/>
+                android:maxHeight="100dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:layout_marginLeft="10dp"
-                android:layout_marginVertical="10dp">
+                android:layout_margin="1dp"
+                android:elevation="5dp"
+                android:paddingVertical="5dp"
+                android:paddingStart="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/home_rv_item_name"
-                    android:layout_width="240dp"
-                    android:layout_height="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="Item Name"
                     android:textStyle="bold"
                     android:textSize="16sp"
                     android:textColor="@color/black"
-                    android:maxLines="1"
-                    android:maxLength="30"
+                    android:maxLines="2"
+                    android:layout_marginEnd="5dp"
                     android:ellipsize="end"/>
 
                 <TextView
                     android:id="@+id/home_rv_item_desc"
-                    android:layout_width="240dp"
-                    android:layout_height="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minHeight="60dp"
                     android:text="Item Description"
                     android:textSize="12sp"
-                    android:layout_marginTop="10dp"
-                    android:maxLines="1"
-                    android:maxLength="30"
-                    android:ellipsize="end"/>
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:maxLines="3"
+                    android:ellipsize="end" />
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                    android:layout_height="20dp"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="7dp"
+                    android:gravity="center_vertical">
 
+                    <androidx.appcompat.widget.AppCompatRatingBar
+                        android:id="@+id/home_ratingbar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:numStars="5"
+                        android:stepSize="0.1"
+                        style="@style/Widget.AppCompat.RatingBar.Small"/>
+
+                    <TextView
+                        android:id="@+id/home_comments"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="(30)"
+                        android:textSize="12sp"
+                        android:layout_marginStart="5dp"/>
+                </LinearLayout>
                     <TextView
                         android:id="@+id/home_rv_item_price"
                         android:layout_width="110dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginTop="7dp"
                         android:text="$0000.00"
                         android:textColor="@color/teal_700"
-                        android:textStyle="bold"
-                        android:textSize="25sp"/>
-
-                    <ImageView
-                        android:id="@+id/home_favorite_ic"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:src="@drawable/not_favorited_ic"
-                        android:layout_marginStart="60dp"/>
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
 
-                </LinearLayout>
+
 
 
 

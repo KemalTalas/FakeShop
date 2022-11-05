@@ -7,14 +7,13 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.kemaltalas.fakeshop.R
 import com.kemaltalas.fakeshop.data.model.Product
 import com.kemaltalas.fakeshop.databinding.FragmentHomeBinding
 import com.kemaltalas.fakeshop.databinding.RowHomeItemBinding
 
 class HomeAdapter : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
-
-
 
     private val diffUtil = object : DiffUtil.ItemCallback<Product>(){
         override fun areItemsTheSame(oldItem: Product, newItem: Product): Boolean {
@@ -24,16 +23,12 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
         override fun areContentsTheSame(oldItem: Product, newItem: Product): Boolean {
             return oldItem.id == newItem.id
         }
-
     }
     val recyclerListDiffer = AsyncListDiffer(this@HomeAdapter,diffUtil)
 
-
     var products : List<Product>
-        get() = recyclerListDiffer.currentList.sortedByDescending { it.price.toDouble() }.take(8)
+        get() = recyclerListDiffer.currentList.sortedByDescending { it.rating.rate }.take(8)
         set(value) = recyclerListDiffer.submitList(value)
-
-    var likedlist = products.filter { it.isFavorited == true }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
         val binding = RowHomeItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
@@ -61,34 +56,15 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
                 .load(product.image)
                 .into(binding.homeRvImage)
 
-            if(product.title.length<=25){
-                binding.homeRvItemName.text = product.title
-            }else{
-                binding.homeRvItemName.text = "${product.title.substring(0,21)}..."
-            }
-            if (product.description.length<=25){
-                binding.homeRvItemDesc.text = product.description
-            }else{
-                binding.homeRvItemDesc.text = "${product.description.substring(0,21)}..."
-            }
-            binding.homeRvItemPrice.text = "$${product.price}"
+            binding.homeRvItemName.text = product.title
+            binding.homeRvItemDesc.text = product.description.replaceFirstChar { it.uppercase() }
+            binding.homeRvItemPrice.text = "$${String.format("%.2f",product.price.toDouble())}"
+            binding.homeRatingbar.rating = product.rating.rate.toFloat()
+            binding.homeComments.text = "(${product.rating.count})"
 
             binding.homeRowItem.setOnClickListener {
                 onItemClickListener(product)
             }
-
-
-
-            binding.homeFavoriteIc.apply {
-                if (likedlist.contains(product)){
-                    setImageResource(R.drawable.favorited_ic)
-                }else{
-                    setImageResource(R.drawable.not_favorited_ic)
-                }
-            }
-
         }
-
     }
-
 }

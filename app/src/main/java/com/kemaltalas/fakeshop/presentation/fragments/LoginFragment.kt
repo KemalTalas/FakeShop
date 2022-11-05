@@ -1,5 +1,6 @@
 package com.kemaltalas.fakeshop.presentation.fragments
 
+import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
@@ -36,22 +37,25 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         super.onViewCreated(view, savedInstanceState)
 
         val binding = FragmentLoginBinding.bind(view)
-        fragmentBinding = binding
+        fragmentBinding = binding;
 
-        viewModel.getPerson.observe(viewLifecycleOwner){
-            if (it != null){
+        if (isLogged()){
                 findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToUserPanelFragment())
-            }
         }
+
 
         binding.loginSigninBtn.setOnClickListener {
            viewModel.getPerson.observe(viewLifecycleOwner){ user->
-
-            if (user.username==binding.loginTieUsername.text.toString() && user.password == binding.loginTiePassword.text.toString()){
-                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToUserPanelFragment())
-                Toast.makeText(requireContext(),user.firstname,Toast.LENGTH_SHORT).show()
+            if (user != null){
+                if (user.username==binding.loginTieUsername.text.toString() && user.password == binding.loginTiePassword.text.toString()){
+                    findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToUserPanelFragment())
+                    val sharedpref = requireActivity().getSharedPreferences("isLoggedIn",Context.MODE_PRIVATE).edit()
+                    sharedpref.putBoolean("isLogged",true).apply()
+                }else{
+                    Toast.makeText(requireContext(),"Olmadı...",Toast.LENGTH_SHORT).show()
+                }
             }else{
-                Toast.makeText(requireContext(),"Olmadı...",Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(),"Please create a new account",Toast.LENGTH_SHORT).show()
             }
            }
         }
@@ -62,7 +66,11 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToRegisterFragment())
         }
 
+    }
 
+    fun isLogged() : Boolean{
+        val sharedprefs = requireActivity().getSharedPreferences("isLoggedIn",Context.MODE_PRIVATE)
+        return sharedprefs.getBoolean("isLogged",false)
     }
 
 }

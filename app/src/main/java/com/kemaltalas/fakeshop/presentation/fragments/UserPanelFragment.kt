@@ -1,5 +1,6 @@
 package com.kemaltalas.fakeshop.presentation.fragments
 
+import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
@@ -33,16 +34,19 @@ class UserPanelFragment : Fragment(R.layout.fragment_user_panel) {
         fragmentBinding = binding
 
         viewModel.getPerson.observe(viewLifecycleOwner){
-            binding.userpanelUsernameTv.text = it.firstname.replaceFirstChar { it.uppercase() }+" "+it.lastname.replaceFirstChar { it.uppercase() }
+            binding.userpanelFirstlastnameTv.text = it.firstname.replaceFirstChar { it.uppercase() }+" "+it.lastname.replaceFirstChar { it.uppercase() }
+            binding.userpanelUsernameTv.text = "@${it.username.lowercase()}"
             binding.root.invalidate()
         }
 
+        val sharedPrefs = requireActivity().getSharedPreferences("isLoggedIn",Context.MODE_PRIVATE)
+
         binding.upLogout.setOnClickListener {
             findNavController().navigateUp()
+            Toast.makeText(requireContext(),"Olmadı...",Toast.LENGTH_SHORT).show()
+            sharedPrefs.edit().putBoolean("isLogged",false).apply()
         }
-        binding.upLogoutImg.setOnClickListener {
-            findNavController().navigateUp()
-        }
+
 
 
     }
