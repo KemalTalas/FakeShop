@@ -100,6 +100,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
 
 
+
         viewModel.products.observe(viewLifecycleOwner){
             when(it){
                 is Resource.Success -> {

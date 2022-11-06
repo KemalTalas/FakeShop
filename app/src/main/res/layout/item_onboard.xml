@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <ImageView
+        android:id="@+id/ob_image"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="120dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_gravity="center">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ob_dot1"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:background="@color/teal_700"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ob_dot2"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_marginStart="5dp"
+        android:background="@color/teal_200"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ob_dot3"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_marginStart="5dp"
+        android:background="@color/teal_200"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/ob_tv"
+        android:textColor="@color/teal_700"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="240dp"/>
+
+    <TextView
+        android:id="@+id/ob_desctv"
+        android:textSize="16sp"
+        android:textAlignment="center"
+        android:paddingHorizontal="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="180dp"/>
+
+    <Button
+        android:id="@+id/ob_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Explore FakeShop"
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="100dp"/>
+
+</FrameLayout>

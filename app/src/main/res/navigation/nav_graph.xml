@@ -13,6 +13,11 @@
             app:destination="@id/homeFragment"
             app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashFragment_to_viewPagerFragment"
+            app:destination="@id/viewPagerFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
@@ -106,5 +111,15 @@
         android:id="@+id/forgotpasswordFragment"
         android:name="com.kemaltalas.fakeshop.presentation.fragments.ForgotpasswordFragment"
         android:label="ForgotpasswordFragment" />
+    <fragment
+        android:id="@+id/viewPagerFragment"
+        android:name="com.kemaltalas.fakeshop.presentation.fragments.onboarding.ViewPagerFragment"
+        android:label="ViewPagerFragment" >
+        <action
+            android:id="@+id/action_viewPagerFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/viewPagerFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 
 </navigation>

@@ -70,9 +70,27 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
 
 
         viewModel.products.observe(viewLifecycleOwner) {
-            adapter.recyclerListDiffer.submitList(it.data)
-            adapter.notifyDataSetChanged()
-            list = adapter.recyclerListDiffer.currentList
+            when(it){
+                is Resource.Success ->{
+                    adapter.recyclerListDiffer.submitList(it.data)
+                    adapter.notifyDataSetChanged()
+                    list = adapter.recyclerListDiffer.currentList
+                    binding.shimmerProduct.stopShimmer()
+                    binding.shimmerProduct.visibility = View.GONE
+                    binding.productsRecycler.visibility = View.VISIBLE
+                }
+                is Resource.Loading ->{
+                    binding.productsRecycler.visibility = View.GONE
+                    binding.shimmerProduct.visibility = View.VISIBLE
+                    binding.shimmerProduct.showShimmer(true)
+                }
+                is Resource.Error ->{
+                    Log.e("Products Page","Error on products page")
+                }
+            }
+//            adapter.recyclerListDiffer.submitList(it.data)
+//            adapter.notifyDataSetChanged()
+//            list = adapter.recyclerListDiffer.currentList
         }
 
         binding.productsRecycler.adapter = adapter
@@ -92,7 +110,7 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
 
         //** SORT    ***///
 
-        val sortArray = arrayOf("Best Match","Price Asc","Price Desc","Most Liked","Most Commented")
+        val sortArray = arrayOf("Best Match","Price Low to High","Price High to Low","Customer Rating","Reviews")
         var adbIndex = 0
         var selectedItem = ""
         binding.productsPage.setOnClickListener { hideKeyboards() }
