@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.snackbar.Snackbar
 import com.kemaltalas.fakeshop.R
 import com.kemaltalas.fakeshop.data.model.CartItems
@@ -29,7 +30,6 @@ class DetailScreenFragment : Fragment(R.layout.fragment_detail_screen) {
     @Inject
     lateinit var viewModel: DetailViewModel
 
-    private var liked = false
 
     @Inject
     lateinit var adapter: FavoritesAdapter
@@ -53,6 +53,12 @@ class DetailScreenFragment : Fragment(R.layout.fragment_detail_screen) {
         }
 
         loadViews()
+
+        BottomSheetBehavior.from(binding.frameLayout).apply {
+            peekHeight=1200
+            maxHeight=1600
+            state = BottomSheetBehavior.STATE_COLLAPSED
+        }
 
 
         binding.detailFav.apply {
@@ -86,6 +92,16 @@ class DetailScreenFragment : Fragment(R.layout.fragment_detail_screen) {
             viewModel.addToCart(cartItems)
 
         }
+        var isClicked = false
+        binding.detailItemTitle.setOnClickListener {
+            if (isClicked){
+                binding.detailItemTitle.maxLines = 2
+                isClicked = false
+            }else{
+                binding.detailItemTitle.maxLines = 4
+                isClicked = true
+            }
+        }
 
 
     }
@@ -94,8 +110,10 @@ class DetailScreenFragment : Fragment(R.layout.fragment_detail_screen) {
 
         fragmentBinding?.let {
             it.detailItemTitle.text = product.title
-            it.detailItemDesc.text = product.description
-            it.detailPrice.text = "$${product.price}"
+            it.detailItemDesc.text = product.description.replaceFirstChar { it.uppercase() }
+            it.detailPrice.text = "$${String.format("%.2f",product.price.toDouble())}"
+            it.detailRating.rating = product.rating.rate.toFloat()
+            it.detailComments.text = "(${product.rating.count})"
 
             Glide.with(it.detailItemImage)
                 .load(product.image)
@@ -106,7 +124,4 @@ class DetailScreenFragment : Fragment(R.layout.fragment_detail_screen) {
 
 
     }
-
-
-
 }

@@ -28,6 +28,5 @@ class DetailViewModel @Inject constructor(
 
     fun addToCart(cartItems: CartItems) = viewModelScope.launch(IO) { favoritesUseCase.addToCart(cartItems) }
 
-    fun deleteFromCart(cartItems: CartItems) = viewModelScope.launch(IO) { favoritesUseCase.deleteFromCart(cartItems) }
 
 }

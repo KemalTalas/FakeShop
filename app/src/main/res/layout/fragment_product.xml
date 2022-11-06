@@ -7,23 +7,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/products_page">
 
-<!--    <androidx.appcompat.widget.Toolbar-->
-<!--        android:id="@+id/toolbar_products"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="?attr/actionBarSize"-->
-<!--        android:background="#F1F1F1"-->
-<!--        android:gravity="center_horizontal"-->
-<!--        android:layout_marginStart="120dp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:logo="@drawable/home_toolbar_logo"-->
-<!--        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"-->
-<!--        app:title="FakeShop"-->
-<!--        app:titleTextColor="@color/teal_700"-->
-<!--        app:titleMarginStart="20dp">-->
-
-<!--    </androidx.appcompat.widget.Toolbar>-->
 
     <LinearLayout
         android:id="@+id/products_top"
@@ -32,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:orientation="horizontal"
         android:paddingVertical="10dp"
-        android:background="@drawable/userpanel_bg"
+        android:background="@drawable/home_top_bg"
         android:weightSum="10">
 
     <com.google.android.material.imageview.ShapeableImageView
@@ -59,8 +42,6 @@
             android:textSize="24sp"
             android:layout_marginStart="90dp"/>
 
-
-
     </LinearLayout>
 
     <SearchView
@@ -71,7 +52,7 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/searchview_bg"
         android:iconifiedByDefault="false"
-        android:queryHint="Search for everything"
+        android:queryHint="Search for products..."
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/products_top" />
 
@@ -149,8 +130,6 @@
                 android:background="#F1F1F1"/>
 
         </LinearLayout>
-
-
 
     </androidx.core.widget.NestedScrollView>
 

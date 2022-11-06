@@ -8,8 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.kemaltalas.fakeshop.data.model.Product
 import com.kemaltalas.fakeshop.databinding.RowHomeItemBinding
-import com.kemaltalas.fakeshop.databinding.RowListItemBinding
-import com.kemaltalas.fakeshop.databinding.RowProductsBinding
 
 class FavoritesAdapter : RecyclerView.Adapter<FavoritesAdapter.FavoritesViewHolder>() {
 

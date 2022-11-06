@@ -10,7 +10,9 @@
         android:label="SplashFragment" >
         <action
             android:id="@+id/action_splashFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
@@ -61,6 +63,9 @@
         <action
             android:id="@+id/action_loginFragment_to_userPanelFragment"
             app:destination="@id/userPanelFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_forgotpasswordFragment"
+            app:destination="@id/forgotpasswordFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -97,5 +102,9 @@
             android:id="@+id/action_productFragment_to_categoriesFragment"
             app:destination="@id/categoriesFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/forgotpasswordFragment"
+        android:name="com.kemaltalas.fakeshop.presentation.fragments.ForgotpasswordFragment"
+        android:label="ForgotpasswordFragment" />
 
 </navigation>

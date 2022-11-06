@@ -43,7 +43,6 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
 
     lateinit var list : MutableList<Product>
 
-
     private var filteredList = mutableListOf<Product>()
 
 
@@ -69,17 +68,12 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
             binding.productsFilterbutton.visibility = View.INVISIBLE
         }
 
-        println(categoryName)
-
-
-
 
         viewModel.products.observe(viewLifecycleOwner) {
             adapter.recyclerListDiffer.submitList(it.data)
             adapter.notifyDataSetChanged()
             list = adapter.recyclerListDiffer.currentList
         }
-
 
         binding.productsRecycler.adapter = adapter
         binding.productsRecycler.layoutManager = GridLayoutManager(requireContext(),2,GridLayoutManager.VERTICAL,false)
@@ -98,7 +92,7 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
 
         //** SORT    ***///
 
-        val sortArray = arrayOf("Best Match","Price Asc","Price Desc")
+        val sortArray = arrayOf("Best Match","Price Asc","Price Desc","Most Liked","Most Commented")
         var adbIndex = 0
         var selectedItem = ""
         binding.productsPage.setOnClickListener { hideKeyboards() }
@@ -130,11 +124,9 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
                         sortArray[1] ->{
                             if (filteredList.isNotEmpty()){
                                 adapter.recyclerListDiffer.submitList(filteredList.sortedBy { it.price.toDouble() })
-                                Log.e("Sort Listesi","Filtered List kullanıldı")
                             }
                             else {
                                 adapter.recyclerListDiffer.submitList(list.sortedBy { it.price.toDouble() })
-                                Log.e("Sort Listesi","Normal list kullanıldı")
                             }
                             binding.productsRecycler.smoothScrollToPosition(0)
                         }
@@ -144,6 +136,26 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
                             }
                             else{
                                 adapter.recyclerListDiffer.submitList(list.sortedByDescending { it.price.toDouble() })
+                            }
+                            binding.productsRecycler.smoothScrollToPosition(0)
+
+                        }
+                        sortArray[3] -> {
+                            if (filteredList.isNotEmpty()){
+                                adapter.recyclerListDiffer.submitList(filteredList.sortedByDescending { it.rating.rate })
+                            }
+                            else{
+                                adapter.recyclerListDiffer.submitList(list.sortedByDescending { it.rating.rate })
+                            }
+                            binding.productsRecycler.smoothScrollToPosition(0)
+
+                        }
+                        sortArray[4] -> {
+                            if (filteredList.isNotEmpty()){
+                                adapter.recyclerListDiffer.submitList(filteredList.sortedByDescending { it.rating.count })
+                            }
+                            else{
+                                adapter.recyclerListDiffer.submitList(list.sortedByDescending { it.rating.count})
                             }
                             binding.productsRecycler.smoothScrollToPosition(0)
 
@@ -212,7 +224,7 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
                 } .setNeutralButton("Show All"){dialog,which ->
                     adapter.recyclerListDiffer.submitList(list)
                      filteredList.addAll(adapter.recyclerListDiffer.currentList)
-                    filterArrayBool.forEach { it==false }
+//                    filterArrayBool.forEach { it == true }
                     binding.productsRecycler.smoothScrollToPosition(0)
 
                 }.show()

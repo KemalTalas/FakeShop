@@ -5,31 +5,41 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_register"
+    <LinearLayout
+        android:id="@+id/register_top"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/white"
-        android:gravity="center_horizontal"
-        android:layout_marginStart="120dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        app:logo="@drawable/home_toolbar_logo"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:title="FakeShop"
-        app:titleTextColor="@color/teal_700"
-        app:titleMarginStart="20dp"/>
+        android:orientation="horizontal"
+        android:paddingVertical="10dp"
+        android:background="@drawable/home_top_bg"
+        android:weightSum="10">
 
-    <ImageView
-        android:id="@+id/register_backbutton"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="12dp"
-        android:src="@drawable/back_ic"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/register_backbutton"
+            android:layout_width="30dp"
+            android:maxWidth="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="15dp"
+            android:src="@drawable/back_ic"
+            app:contentPaddingStart="7dp"
+            android:background="#CACACA"
+            android:elevation="5dp"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sergio_trendy"
+            android:text="Register"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:layout_marginStart="110dp"/>
+
+    </LinearLayout>
+
 
     <ScrollView
         android:layout_width="match_parent"
@@ -37,7 +47,7 @@
         android:layout_marginBottom="60dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_register">
+        app:layout_constraintTop_toBottomOf="@+id/register_top">
 
         <LinearLayout
             android:id="@+id/register_linearlayout"
@@ -64,7 +74,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/register_tie_firstname"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -84,7 +95,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/register_tie_lastname"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -100,14 +112,14 @@
             app:helperTextTextColor="#FF0000"
             app:counterEnabled="true"
             app:counterMaxLength="20"
-            app:counterTextColor="@color/colorGrey"
             app:startIconDrawable="@drawable/person_ic"
             tools:layout_editor_absoluteY="256dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/register_tie_username"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -128,7 +140,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/register_tie_password"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -151,7 +164,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/register_tie_email"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -173,7 +187,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/register_tie_confirmemail"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -217,7 +232,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/register_tie_city"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="text"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -236,7 +252,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/register_tie_country"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="text"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -246,7 +263,7 @@
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:layout_marginTop="15dp"
-            android:hint="Address line"
+            android:hint="Address"
             app:errorEnabled="true"
             app:errorIconDrawable="@drawable/error_ic"
             app:counterMaxLength="160"
@@ -255,7 +272,10 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/register_tie_addressline"
                 android:layout_width="match_parent"
-                android:layout_height="100dp" />
+                android:layout_height="90dp"
+                android:maxLines="3"
+                android:maxLength="160"
+                android:inputType="text" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -283,7 +303,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/register_tie_secureanswer"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:inputType="text"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 

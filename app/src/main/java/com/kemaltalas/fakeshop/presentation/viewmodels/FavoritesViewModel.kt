@@ -22,15 +22,11 @@ class FavoritesViewModel @Inject constructor(
 
     fun getFavorites() = favoritesUseCase.getFavorites()
 
-    fun addFavorites(product: Product) = viewModelScope.launch { favoritesUseCase.addFavorites(product) }
 
     fun deleteFavorites(product: Product) = viewModelScope.launch { favoritesUseCase.deleteFavorites(product) }
 
     fun clearFavorites() = viewModelScope.launch { favoritesUseCase.clearFavoritesItems() }
 
-    fun updateFavoritesItem(product: Product, isLiked : Boolean) = viewModelScope.launch {
-        val copy = product.copy(isFavorited = isLiked)
-    }
 
 
     //Cart

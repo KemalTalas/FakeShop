@@ -7,6 +7,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.kemaltalas.fakeshop.R
 import com.kemaltalas.fakeshop.databinding.FragmentFavoritesBinding
 import com.kemaltalas.fakeshop.presentation.adapters.BasketAdapter
@@ -40,18 +41,29 @@ class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
         binding.favoritesRecyclerview.layoutManager = LinearLayoutManager(requireContext())
         ItemTouchHelper(swipeCallBack).attachToRecyclerView(binding.favoritesRecyclerview)
 
+        binding.favoritesFab.setOnClickListener {
+            MaterialAlertDialogBuilder(requireContext(),R.style.MaterialAlertDialog_App)
+                .setTitle("Warning")
+                .setMessage("Are you sure you want to clear the list?")
+                .setNeutralButton("Cancel"){dialog,which->
+                    dialog.cancel()
+                }.setPositiveButton("Clear"){dialog,which->
+                    viewModel.clearFavorites()
+                }.show()
+        }
 
         viewModel.getFavorites().observe(viewLifecycleOwner){
             adapter.recyclerListDiffer.submitList(it)
 
             if (it.isEmpty()){
                 binding.favoritesRecyclerview.visibility = View.INVISIBLE
+                binding.favoritesFab.visibility = View.GONE
                 binding.favoritesTextview.visibility = View.VISIBLE
             }else{
                 binding.favoritesTextview.visibility = View.INVISIBLE
                 binding.favoritesRecyclerview.visibility = View.VISIBLE
+                binding.favoritesFab.visibility = View.VISIBLE
             }
-
         }
 
         adapter.setOnItemClickListener {
@@ -75,7 +87,5 @@ class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
             val selectedItem = adapter.recyclerListDiffer.currentList[layoutPos]
             viewModel.deleteFavorites(selectedItem)
         }
-
     }
-
 }

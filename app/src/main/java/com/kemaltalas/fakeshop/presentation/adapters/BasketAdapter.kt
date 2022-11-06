@@ -23,7 +23,7 @@ class BasketAdapter : RecyclerView.Adapter<BasketAdapter.BasketViewHolder>() {
         fun bindItems(cartItems: CartItems){
             binding.homeRvItemName.text = cartItems.title
             binding.homeRvItemPrice.text = "$${String.format("%.2f",cartItems.price.toDouble())}"
-            binding.homeRvItemDesc.text = cartItems.description
+            binding.homeRvItemDesc.text = cartItems.description.replaceFirstChar { it.uppercase() }
             binding.homeRatingbar.rating = cartItems.rate.rate.toFloat()
             binding.homeComments.text = "(${cartItems.rate.count})"
 

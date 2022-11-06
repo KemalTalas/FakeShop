@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.kemaltalas.fakeshop.R
 import com.kemaltalas.fakeshop.data.model.User
 import com.kemaltalas.fakeshop.data.model.UserDetails
+import com.kemaltalas.fakeshop.data.util.hideKeyboards
 import com.kemaltalas.fakeshop.databinding.FragmentLoginBinding
 import com.kemaltalas.fakeshop.databinding.FragmentUserPanelBinding
 import com.kemaltalas.fakeshop.presentation.viewmodels.AuthViewModel
@@ -31,18 +32,23 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     @Inject
     lateinit var sharedPreferences : SharedPreferences
 
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val binding = FragmentLoginBinding.bind(view)
-        fragmentBinding = binding;
+        fragmentBinding = binding
 
-        if (isLogged()){
+            if (isLogged()){
                 findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToUserPanelFragment())
+            }
+
+        binding.loginConstraint.setOnClickListener {
+            hideKeyboards()
         }
 
+        binding.loginForgotpassword.setOnClickListener {
+            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToForgotpasswordFragment())
+        }
 
         binding.loginSigninBtn.setOnClickListener {
            viewModel.getPerson.observe(viewLifecycleOwner){ user->
@@ -51,8 +57,9 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                     findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToUserPanelFragment())
                     val sharedpref = requireActivity().getSharedPreferences("isLoggedIn",Context.MODE_PRIVATE).edit()
                     sharedpref.putBoolean("isLogged",true).apply()
+                    Toast.makeText(requireContext(),"Successfully logged in.",Toast.LENGTH_SHORT).show()
                 }else{
-                    Toast.makeText(requireContext(),"Olmadı...",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(),"Your username or password is incorrect",Toast.LENGTH_SHORT).show()
                 }
             }else{
                 Toast.makeText(requireContext(),"Please create a new account",Toast.LENGTH_SHORT).show()
@@ -67,8 +74,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         }
 
     }
-
-    fun isLogged() : Boolean{
+    private fun isLogged() : Boolean{
         val sharedprefs = requireActivity().getSharedPreferences("isLoggedIn",Context.MODE_PRIVATE)
         return sharedprefs.getBoolean("isLogged",false)
     }

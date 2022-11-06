@@ -14,5 +14,4 @@ data class CartItems(
     val title : String,
     val price : String,
     val quantity : Int,
-) : Serializable {
-}
+) : Serializable

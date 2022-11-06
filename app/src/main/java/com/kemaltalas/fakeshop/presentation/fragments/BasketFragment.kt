@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.kemaltalas.fakeshop.R
 import com.kemaltalas.fakeshop.data.model.CartItems
 import com.kemaltalas.fakeshop.data.model.Product
@@ -36,7 +37,6 @@ class BasketFragment : Fragment(R.layout.fragment_basket) {
 
     private lateinit var textView: TextView
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -61,17 +61,30 @@ class BasketFragment : Fragment(R.layout.fragment_basket) {
            binding.basketPrice.text = "$${String.format("%.2f",it)}"
 
             if (it == 0.0){
-                binding.basketRecyclerview.visibility = View.INVISIBLE
                 binding.basketTextView.visibility = View.VISIBLE
+                binding.basketRecyclerview.visibility = View.INVISIBLE
+                binding.cartFab.visibility = View.GONE
+                binding.basketCheckoutLayout.visibility = View.GONE
             }else{
                 binding.basketRecyclerview.visibility = View.VISIBLE
+                binding.cartFab.visibility = View.VISIBLE
+                binding.basketCheckoutLayout.visibility = View.VISIBLE
                 binding.basketTextView.visibility = View.INVISIBLE
             }
 
             binding.root.invalidate()
         }
 
-
+        binding.cartFab.setOnClickListener {
+            MaterialAlertDialogBuilder(requireContext(),R.style.MaterialAlertDialog_App)
+                .setTitle("Warning")
+                .setMessage("Are you sure you want to clear the list?")
+                .setNeutralButton("Cancel"){dialog,which->
+                    dialog.cancel()
+                }.setPositiveButton("Clear"){dialog,which->
+                    viewModel.clearCart()
+                }.show()
+        }
     }
 
     private val swipeCallback = object : ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT){
@@ -84,10 +97,9 @@ class BasketFragment : Fragment(R.layout.fragment_basket) {
         }
 
         override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-            val layoutPos = viewHolder.layoutPosition;
-            val selectedItem = adapter.listDiffer.currentList[layoutPos];
-                viewModel.deleteFromCart(selectedItem)
+            val layoutPos = viewHolder.layoutPosition
+            val selectedItem = adapter.listDiffer.currentList[layoutPos]
+            viewModel.deleteFromCart(selectedItem)
         }
     }
-
 }

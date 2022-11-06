@@ -18,7 +18,7 @@ class HomeViewModel @Inject constructor(
 
     val products : MutableLiveData<Resource<ArrayList<Product>>> = MutableLiveData()
 
-    val listSize : MutableLiveData<Int> = MutableLiveData()
+    private val listSize : MutableLiveData<Int> = MutableLiveData()
 
     val user : LiveData<UserDetails> = productUseCase.getUsername()
 

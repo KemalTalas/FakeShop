@@ -51,7 +51,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private var fragmentBinding : FragmentHomeBinding? = null
 
-    lateinit var shimmer: ShimmerFrameLayout
+    private lateinit var shimmer: ShimmerFrameLayout
 
 
 
@@ -160,7 +160,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     }
 
-    fun isLogged() : Boolean{
+    private fun isLogged() : Boolean{
         val sharedprefs = requireActivity().getSharedPreferences("isLoggedIn",Context.MODE_PRIVATE)
         return sharedprefs.getBoolean("isLogged",false)
     }

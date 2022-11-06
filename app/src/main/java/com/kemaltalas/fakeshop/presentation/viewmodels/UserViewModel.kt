@@ -4,7 +4,6 @@ import android.content.SharedPreferences
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.room.PrimaryKey
 import com.kemaltalas.fakeshop.data.model.Token
 import com.kemaltalas.fakeshop.data.model.User
 import com.kemaltalas.fakeshop.data.util.Constants

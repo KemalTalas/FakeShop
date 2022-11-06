@@ -28,7 +28,7 @@ class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.CategoryViewHol
     }
     val recyclerListDiffer = AsyncListDiffer(this@CategoriesAdapter,diffUtil)
 
-    var categoryName : List<Product>
+    private var categoryName : List<Product>
         get() = recyclerListDiffer.currentList.distinctBy { it.category }.sortedBy { it.category }
         set(value) = recyclerListDiffer.submitList(value)
 
