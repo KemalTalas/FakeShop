@@ -1,9 +1,7 @@
 package com.kemaltalas.fakeshop.data.repo.implementation
 
 import androidx.lifecycle.LiveData
-import com.kemaltalas.fakeshop.data.local.FakeShopDao
 import com.kemaltalas.fakeshop.data.model.*
-import com.kemaltalas.fakeshop.data.remote.ApiService
 import com.kemaltalas.fakeshop.data.util.Resource
 import com.kemaltalas.fakeshop.data.repo.repository.FakeShopRepository
 import com.kemaltalas.fakeshop.data.repo.repository.LocalDataSource
@@ -111,15 +109,6 @@ class FakeShopRepositoryImp @Inject constructor(
               return Resource.Success(it)
           }
       }
-        return Resource.Error(message = "Error In Categories")
-    }
-
-    private fun responseToCategoryProductsResult(response: Response<ArrayList<Product>>) : Resource<ArrayList<Product>>{
-        if (response.isSuccessful){
-            response.body()?.let {
-                return Resource.Success(it)
-            }
-        }
         return Resource.Error(message = "Error In Categories")
     }
 

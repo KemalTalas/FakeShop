@@ -3,17 +3,13 @@ package com.kemaltalas.fakeshop.presentation.fragments
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.kemaltalas.fakeshop.R
-import com.kemaltalas.fakeshop.data.util.Constants
-import com.kemaltalas.fakeshop.data.util.SharedPrefs
 import com.kemaltalas.fakeshop.databinding.FragmentUserPanelBinding
 import com.kemaltalas.fakeshop.presentation.viewmodels.AuthViewModel
-import com.kemaltalas.fakeshop.presentation.viewmodels.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -43,11 +39,9 @@ class UserPanelFragment : Fragment(R.layout.fragment_user_panel) {
 
         binding.upLogout.setOnClickListener {
             findNavController().navigateUp()
-            Toast.makeText(requireContext(),"Olmadı...",Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(),"Successfully Logged Out",Toast.LENGTH_SHORT).show()
             sharedPrefs.edit().putBoolean("isLogged",false).apply()
         }
-
-
 
     }
 

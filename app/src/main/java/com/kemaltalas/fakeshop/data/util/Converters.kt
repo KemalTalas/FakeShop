@@ -1,13 +1,10 @@
 package com.kemaltalas.fakeshop.data.util
 
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import androidx.room.ProvidedTypeConverter
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.kemaltalas.fakeshop.data.model.Rate
-import java.io.ByteArrayOutputStream
 import javax.inject.Inject
 
 @ProvidedTypeConverter

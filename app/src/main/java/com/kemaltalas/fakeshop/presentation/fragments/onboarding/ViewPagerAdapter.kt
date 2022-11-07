@@ -1,36 +1,12 @@
 package com.kemaltalas.fakeshop.presentation.fragments.onboarding
 
-import android.content.res.ColorStateList
-import android.content.res.Resources
-import android.content.res.Resources.Theme
-import android.graphics.Color
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.Lifecycle
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.kemaltalas.fakeshop.R
-import com.kemaltalas.fakeshop.data.model.Product
 import com.kemaltalas.fakeshop.databinding.ItemOnboardBinding
 
-//class ViewPagerAdapter(list: ArrayList<Fragment>,fm: FragmentManager,lifecycle: Lifecycle): FragmentStateAdapter(fm,lifecycle) {
-//
-//    private val fragmentList = list
-//
-//    override fun getItemCount(): Int {
-//        return fragmentList.size
-//    }
-//
-//    override fun createFragment(position: Int): Fragment {
-//        return fragmentList[position]
-//    }
-//
-//
-//}
 
 class ViewPagerAdapter(
     val images: List<Int>,
@@ -51,17 +27,15 @@ class ViewPagerAdapter(
             binding.obDesctv.text = descList[adapterPosition]
             binding.obDot1.setBackgroundColor(binding.root.resources.getColor(R.color.teal_200))
             binding.obImage.setImageResource(images[position])
+
             binding.obButton.visibility = visibleList[position]
             binding.obButton.setOnClickListener {
                 onItemClickListener(binding.obButton)
             }
 
-
                 binding.obDot1.setBackgroundResource(colorslist[position][0])
                 binding.obDot2.setBackgroundResource(colorslist[position][1])
                 binding.obDot3.setBackgroundResource(colorslist[position][2])
-
-
 
         }
     }
@@ -78,6 +52,5 @@ class ViewPagerAdapter(
     override fun getItemCount(): Int {
         return images.size
     }
-
 
 }

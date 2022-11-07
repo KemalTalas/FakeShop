@@ -2,7 +2,6 @@ package com.kemaltalas.fakeshop.presentation.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.kemaltalas.fakeshop.data.model.UserDetails
 import com.kemaltalas.fakeshop.domain.usecase.AuthUseCase
@@ -22,16 +21,15 @@ class AuthViewModel @Inject constructor(
         authUseCase.registerUser(userDetails)
     }
 
-    fun updateUser(userDetails: UserDetails) = viewModelScope.launch(Dispatchers.IO) {
-        authUseCase.updateUser(userDetails)
-    }
-
-    fun getUserDetail() = liveData<UserDetails> {
-         authUseCase.getUserDetails()
-    }
-
     fun deleteAllUsers() = viewModelScope.launch(Dispatchers.IO) {
         authUseCase.deleteAllUsers()
     }
+
+    /**
+     * For updating user use this method
+     */
+//    fun updateUser(userDetails: UserDetails) = viewModelScope.launch(Dispatchers.IO) {
+//        authUseCase.updateUser(userDetails)
+//    }
 
 }

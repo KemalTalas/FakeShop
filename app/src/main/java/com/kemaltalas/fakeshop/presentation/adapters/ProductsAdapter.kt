@@ -2,11 +2,9 @@ package com.kemaltalas.fakeshop.presentation.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Filter
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
 import com.kemaltalas.fakeshop.data.model.Product
 import com.kemaltalas.fakeshop.databinding.RowProductsBinding
@@ -45,10 +43,9 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ProductsViewHolder>
         override fun areContentsTheSame(oldItem: Product, newItem: Product): Boolean {
             return oldItem.id == newItem.id
         }
-
     }
-    val recyclerListDiffer = AsyncListDiffer(this@ProductsAdapter,diffUtil)
 
+    val recyclerListDiffer = AsyncListDiffer(this@ProductsAdapter,diffUtil)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductsViewHolder {
         val binding = RowProductsBinding.inflate(LayoutInflater.from(parent.context),parent,false)

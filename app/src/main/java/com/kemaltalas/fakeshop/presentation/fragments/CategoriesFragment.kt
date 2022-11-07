@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.kemaltalas.fakeshop.R
 import com.kemaltalas.fakeshop.data.util.Resource
 import com.kemaltalas.fakeshop.databinding.FragmentCategoriesBinding
-import com.kemaltalas.fakeshop.databinding.FragmentHomeBinding
 import com.kemaltalas.fakeshop.presentation.adapters.CategoriesAdapter
 import com.kemaltalas.fakeshop.presentation.viewmodels.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint

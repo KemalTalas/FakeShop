@@ -4,7 +4,6 @@ import com.kemaltalas.fakeshop.data.model.Product
 import com.kemaltalas.fakeshop.data.model.Token
 import com.kemaltalas.fakeshop.data.model.User
 import com.kemaltalas.fakeshop.data.remote.ApiService
-import com.kemaltalas.fakeshop.data.util.Resource
 import com.kemaltalas.fakeshop.data.repo.repository.RemoteDataSource
 import retrofit2.Response
 import javax.inject.Inject

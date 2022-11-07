@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.kemaltalas.fakeshop.R
 import com.kemaltalas.fakeshop.databinding.FragmentViewPagerBinding
-import com.kemaltalas.fakeshop.presentation.fragments.HomeFragmentDirections
 
 class ViewPagerFragment : Fragment() {
 

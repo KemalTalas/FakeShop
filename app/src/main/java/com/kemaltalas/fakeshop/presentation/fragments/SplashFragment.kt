@@ -9,10 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.kemaltalas.fakeshop.R
-import com.kemaltalas.fakeshop.databinding.FragmentSplashBinding
-import kotlinx.coroutines.delay
 
 class SplashFragment : Fragment(R.layout.fragment_splash) {
 
@@ -25,9 +22,6 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
 
         val view = inflater.inflate(R.layout.fragment_splash,container,false)
 
-//        Handler(Looper.myLooper()!!).postDelayed({
-//            findNavController().navigate(R.id.action_splashFragment_to_viewPagerFragment)
-//        }, 2000)
         Handler(Looper.myLooper()!!).postDelayed({
             if(onBoardingFinished()){
                 findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
@@ -38,18 +32,11 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
 
         return view
 
-
-
-
     }
-
 
     private fun onBoardingFinished(): Boolean{
         val sharedPref = requireActivity().getSharedPreferences("onBoarding", Context.MODE_PRIVATE)
         return sharedPref.getBoolean("Finished", false)
     }
-
-
-
 
 }

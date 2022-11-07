@@ -3,7 +3,6 @@ package com.kemaltalas.fakeshop.data.repo.repository
 import androidx.lifecycle.LiveData
 import com.kemaltalas.fakeshop.data.model.*
 import com.kemaltalas.fakeshop.data.util.Resource
-import retrofit2.Response
 
 interface FakeShopRepository {
 

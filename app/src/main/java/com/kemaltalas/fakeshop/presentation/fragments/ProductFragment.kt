@@ -5,28 +5,17 @@ import android.util.Log
 import android.view.View
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.kemaltalas.fakeshop.R
 import com.kemaltalas.fakeshop.data.model.Product
-import com.kemaltalas.fakeshop.data.remote.ApiService
-import com.kemaltalas.fakeshop.data.util.Constants.BASE_URL
 import com.kemaltalas.fakeshop.data.util.Resource
 import com.kemaltalas.fakeshop.data.util.hideKeyboards
 import com.kemaltalas.fakeshop.databinding.FragmentProductBinding
 import com.kemaltalas.fakeshop.presentation.adapters.ProductsAdapter
 import com.kemaltalas.fakeshop.presentation.viewmodels.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 import java.util.*
 import javax.inject.Inject
 import kotlin.collections.ArrayList
@@ -68,7 +57,6 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
             binding.productsFilterbutton.visibility = View.INVISIBLE
         }
 
-
         viewModel.products.observe(viewLifecycleOwner) {
             when(it){
                 is Resource.Success ->{
@@ -88,9 +76,7 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
                     Log.e("Products Page","Error on products page")
                 }
             }
-//            adapter.recyclerListDiffer.submitList(it.data)
-//            adapter.notifyDataSetChanged()
-//            list = adapter.recyclerListDiffer.currentList
+
         }
 
         binding.productsRecycler.adapter = adapter
@@ -115,8 +101,6 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
         var selectedItem = ""
         binding.productsPage.setOnClickListener { hideKeyboards() }
         binding.productsTop.setOnClickListener { hideKeyboards() }
-
-//        viewModel.getCategoryProducts(categoryName)
 
 
         binding.productsSortbutton.setOnClickListener {

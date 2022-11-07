@@ -36,10 +36,10 @@ class SharedPrefs @Inject constructor(private val sharedPreferences: SharedPrefe
         sharedPreferences.edit().putString(Constants.LOGIN_TOKEN,null)
     }
 
-    fun userLogoutSP() : Boolean{
-        sharedPreferences.edit().remove(Constants.LOGIN_TOKEN).apply()
-        return userLoginSP()
-    }
+//    fun userLogoutSP() : Boolean{
+//        sharedPreferences.edit().remove(Constants.LOGIN_TOKEN).apply()
+//        return userLoginSP()
+//    }
 
     fun sharedPrefToken() : String{
         val tokenStr = sharedPreferences.getString(Constants.LOGIN_TOKEN,null)

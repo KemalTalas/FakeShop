@@ -10,7 +10,6 @@ import com.kemaltalas.fakeshop.data.util.Constants
 import com.kemaltalas.fakeshop.data.util.Resource
 import com.kemaltalas.fakeshop.data.util.SharedPrefs
 import com.kemaltalas.fakeshop.domain.usecase.UserUseCase
-import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -30,7 +29,7 @@ class UserViewModel @Inject constructor(
 
     var token = ""
 
-    val loginResponse : MutableLiveData<Resource<Token>> = MutableLiveData()
+    private val loginResponse : MutableLiveData<Resource<Token>> = MutableLiveData()
     val isLogged : Boolean = sharedPrefs.userLoginSP()
     val tokenStr : String = sharedPrefs.sharedPrefToken()
 

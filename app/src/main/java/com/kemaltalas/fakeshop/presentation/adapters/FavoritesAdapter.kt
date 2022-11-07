@@ -61,6 +61,4 @@ class FavoritesAdapter : RecyclerView.Adapter<FavoritesAdapter.FavoritesViewHold
         return recyclerListDiffer.currentList.size
     }
 
-
-
 }

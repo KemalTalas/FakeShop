@@ -2,7 +2,6 @@ package com.kemaltalas.fakeshop.presentation.fragments
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
@@ -12,7 +11,6 @@ import com.kemaltalas.fakeshop.R
 import com.kemaltalas.fakeshop.data.model.CartItems
 import com.kemaltalas.fakeshop.data.model.Product
 import com.kemaltalas.fakeshop.databinding.FragmentDetailScreenBinding
-import com.kemaltalas.fakeshop.databinding.FragmentHomeBinding
 import com.kemaltalas.fakeshop.presentation.adapters.FavoritesAdapter
 import com.kemaltalas.fakeshop.presentation.viewmodels.DetailViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,7 +28,6 @@ class DetailScreenFragment : Fragment(R.layout.fragment_detail_screen) {
     @Inject
     lateinit var viewModel: DetailViewModel
 
-
     @Inject
     lateinit var adapter: FavoritesAdapter
 
@@ -38,7 +35,6 @@ class DetailScreenFragment : Fragment(R.layout.fragment_detail_screen) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         product = DetailScreenFragmentArgs.fromBundle(requireArguments()).product
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -59,7 +55,6 @@ class DetailScreenFragment : Fragment(R.layout.fragment_detail_screen) {
             maxHeight=1600
             state = BottomSheetBehavior.STATE_COLLAPSED
         }
-
 
         binding.detailFav.apply {
             if (product.isFavorited){
@@ -103,7 +98,6 @@ class DetailScreenFragment : Fragment(R.layout.fragment_detail_screen) {
             }
         }
 
-
     }
 
     private fun loadViews(){
@@ -118,10 +112,7 @@ class DetailScreenFragment : Fragment(R.layout.fragment_detail_screen) {
             Glide.with(it.detailItemImage)
                 .load(product.image)
                 .into(it.detailItemImage)
-
-
         }
-
 
     }
 }

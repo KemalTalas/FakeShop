@@ -13,6 +13,10 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 class AppModule {
 
+    /**
+        This provide function can be used with api's login function
+     */
+
     @Provides
     @Singleton
     fun providesSharedPreferences(@ApplicationContext context: Context): SharedPreferences {

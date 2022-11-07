@@ -18,8 +18,6 @@ class HomeViewModel @Inject constructor(
 
     val products : MutableLiveData<Resource<ArrayList<Product>>> = MutableLiveData()
 
-    private val listSize : MutableLiveData<Int> = MutableLiveData()
-
     val user : LiveData<UserDetails> = productUseCase.getUsername()
 
     val favorites : LiveData<List<Product>> = productUseCase.getFavorites()
@@ -48,15 +46,5 @@ class HomeViewModel @Inject constructor(
             getAllProducts()
         }
     }
-
-    fun getListSize(product: ArrayList<Product>) = viewModelScope.launch {
-        listSize.postValue(product.size)
-    }
-
-    fun getUsers() = liveData<UserDetails> {
-        productUseCase.getUsername()
-    }
-
-
 
 }

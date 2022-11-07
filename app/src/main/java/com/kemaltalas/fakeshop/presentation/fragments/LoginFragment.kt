@@ -3,20 +3,15 @@ package com.kemaltalas.fakeshop.presentation.fragments
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.kemaltalas.fakeshop.R
-import com.kemaltalas.fakeshop.data.model.User
-import com.kemaltalas.fakeshop.data.model.UserDetails
 import com.kemaltalas.fakeshop.data.util.hideKeyboards
 import com.kemaltalas.fakeshop.databinding.FragmentLoginBinding
-import com.kemaltalas.fakeshop.databinding.FragmentUserPanelBinding
 import com.kemaltalas.fakeshop.presentation.viewmodels.AuthViewModel
-import com.kemaltalas.fakeshop.presentation.viewmodels.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -38,9 +33,10 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         val binding = FragmentLoginBinding.bind(view)
         fragmentBinding = binding
 
-            if (isLogged()){
-                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToUserPanelFragment())
-            }
+
+        if (isLogged()){
+            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToUserPanelFragment())
+        }
 
         binding.loginConstraint.setOnClickListener {
             hideKeyboards()

@@ -4,42 +4,26 @@ import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.text.Html
 import android.text.SpannableString
 import android.text.SpannableStringBuilder
 import android.text.Spanned
 import android.text.method.LinkMovementMethod
-import android.text.style.CharacterStyle
 import android.text.style.ClickableSpan
-import android.text.util.Linkify
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
-import androidx.appcompat.widget.SearchView
-import androidx.core.animation.doOnEnd
-import androidx.core.text.HtmlCompat
-import androidx.core.text.HtmlCompat.FROM_HTML_MODE_LEGACY
 import androidx.core.text.bold
-import androidx.core.view.size
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.facebook.shimmer.Shimmer
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.kemaltalas.fakeshop.R
-import com.kemaltalas.fakeshop.data.model.Product
 import com.kemaltalas.fakeshop.data.util.Resource
 import com.kemaltalas.fakeshop.databinding.FragmentHomeBinding
 import com.kemaltalas.fakeshop.presentation.adapters.HomeAdapter
 import com.kemaltalas.fakeshop.presentation.viewmodels.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.delay
 import javax.inject.Inject
-import kotlin.math.log
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -66,7 +50,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         viewModel.getAllProducts()
 
 
-
         val firstLine = "Welcome Guest,\n"
         val secondLineClick = object : ClickableSpan(){
             override fun onClick(widget: View) {
@@ -75,7 +58,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
         val secondLine = SpannableString("Please login for more enjoyable shopping")
         secondLine.setSpan(secondLineClick,7, 12, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-
 
 
         viewModel.user.observe(viewLifecycleOwner) {
@@ -98,7 +80,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             }
 
         }
-
 
 
         viewModel.products.observe(viewLifecycleOwner){
@@ -157,7 +138,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         binding.homeWomensclothingButton.setOnClickListener {
             findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProductFragment("women's clothing"))
         }
-
 
     }
 

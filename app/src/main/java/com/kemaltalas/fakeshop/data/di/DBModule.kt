@@ -1,9 +1,7 @@
 package com.kemaltalas.fakeshop.data.di
 
 import android.app.Application
-import android.content.Context
 import androidx.room.Room
-import androidx.room.RoomDatabase
 import com.google.gson.Gson
 import com.kemaltalas.fakeshop.data.local.FakeShopDao
 import com.kemaltalas.fakeshop.data.local.FakeShopDatabase
@@ -11,9 +9,6 @@ import com.kemaltalas.fakeshop.data.util.Converters
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ViewModelComponent
-import dagger.hilt.android.qualifiers.ApplicationContext
-import dagger.hilt.android.scopes.ViewModelScoped
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 

@@ -1,17 +1,13 @@
 package com.kemaltalas.fakeshop.presentation.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.kemaltalas.fakeshop.R
 import com.kemaltalas.fakeshop.data.model.CartItems
-import com.kemaltalas.fakeshop.data.model.Product
-import com.kemaltalas.fakeshop.databinding.FragmentBasketBinding
 import com.kemaltalas.fakeshop.databinding.RowHomeItemBinding
 
 class BasketAdapter : RecyclerView.Adapter<BasketAdapter.BasketViewHolder>() {
@@ -43,9 +39,6 @@ class BasketAdapter : RecyclerView.Adapter<BasketAdapter.BasketViewHolder>() {
 
     }
 
-
-
-
      private val diffUtil = object : DiffUtil.ItemCallback<CartItems>(){
         override fun areItemsTheSame(oldItem: CartItems, newItem: CartItems): Boolean {
             return oldItem.id == newItem.id
@@ -58,7 +51,6 @@ class BasketAdapter : RecyclerView.Adapter<BasketAdapter.BasketViewHolder>() {
     }
 
     var listDiffer = AsyncListDiffer<CartItems>(this@BasketAdapter,diffUtil)
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BasketViewHolder {
         val binding = RowHomeItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
@@ -73,7 +65,5 @@ class BasketAdapter : RecyclerView.Adapter<BasketAdapter.BasketViewHolder>() {
     override fun getItemCount(): Int {
         return listDiffer.currentList.size
     }
-
-
 
 }

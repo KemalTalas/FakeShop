@@ -1,6 +1,5 @@
 package com.kemaltalas.fakeshop.data.model
 
-import android.graphics.Bitmap
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -17,7 +16,6 @@ data class UserDetails(
     val country : String,
     val addressLine : String,
     val secureAnswer : String,
-//    val profilePicture : Bitmap
 
 ){
     @PrimaryKey(autoGenerate = false)

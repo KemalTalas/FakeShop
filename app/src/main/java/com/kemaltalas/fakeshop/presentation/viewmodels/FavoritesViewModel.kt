@@ -28,7 +28,6 @@ class FavoritesViewModel @Inject constructor(
     fun clearFavorites() = viewModelScope.launch { favoritesUseCase.clearFavoritesItems() }
 
 
-
     //Cart
     fun addToCart(cartItems: CartItems) = viewModelScope.launch { favoritesUseCase.addToCart(cartItems) }
 

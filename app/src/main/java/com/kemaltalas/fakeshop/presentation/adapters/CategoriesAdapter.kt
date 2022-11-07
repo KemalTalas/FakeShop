@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.kemaltalas.fakeshop.data.model.Product
 import com.kemaltalas.fakeshop.databinding.RowCategoryBinding
-import java.util.*
 
 class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.CategoryViewHolder>() {
 
@@ -46,8 +45,6 @@ class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.CategoryViewHol
         }
 
     }
-
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
         val binding = RowCategoryBinding.inflate(LayoutInflater.from(parent.context),parent,false)
