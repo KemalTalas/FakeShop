@@ -50,7 +50,7 @@ Details Screen            | Category Screen               | Forgot Password Scre
 - [Dagger Hilt](https://developer.android.com/training/dependency-injection/hilt-android) - A dependency injection library for Android that reduces the boilerplate of doing manual dependency injection in your project.
 - [Glide](https://github.com/bumptech/glide) - Glide is a fast and efficient open source media management and image loading framework for Android that wraps media decoding, memory and disk caching, and resource pooling into a simple and easy to use interface.
 - [Shimmer](https://github.com/facebook/shimmer-android) - Shimmer is an Android library that provides an easy way to add a shimmer effect to any view in your Android app.
-- [ViewPager](https://developer.android.com/reference/kotlin/androidx/viewpager/widget/ViewPager) - ViewPager in Android allows the user to flip left and right through pages of data. In our android ViewPager application we’ll implement a ViewPager that swipes through three views with different images and texts.
+- [ViewPager](https://developer.android.com/reference/kotlin/androidx/viewpager/widget/ViewPager) - ViewPager in Android allows the user to flip left and right through pages of data.
 
 ## Architecture
 
