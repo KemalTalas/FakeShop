@@ -15,6 +15,10 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * This viewmodel is not using due to api auth token stabilization problem
+ */
+
 @HiltViewModel
 class UserViewModel @Inject constructor(
     private val userUseCase: UserUseCase,

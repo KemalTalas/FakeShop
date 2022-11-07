@@ -1,11 +1,11 @@
-package com.kemaltalas.fakeshop.domain.implementation
+package com.kemaltalas.fakeshop.data.repo.implementation
 
 import androidx.lifecycle.LiveData
 import com.kemaltalas.fakeshop.data.local.FakeShopDao
 import com.kemaltalas.fakeshop.data.model.CartItems
 import com.kemaltalas.fakeshop.data.model.Product
 import com.kemaltalas.fakeshop.data.model.UserDetails
-import com.kemaltalas.fakeshop.domain.repository.LocalDataSource
+import com.kemaltalas.fakeshop.data.repo.repository.LocalDataSource
 import javax.inject.Inject
 
 class LocalDataImp @Inject constructor(

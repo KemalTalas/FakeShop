@@ -1,6 +1,6 @@
 package com.kemaltalas.fakeshop.data.di
 
-import com.kemaltalas.fakeshop.domain.repository.FakeShopRepository
+import com.kemaltalas.fakeshop.data.repo.repository.FakeShopRepository
 import com.kemaltalas.fakeshop.domain.usecase.AuthUseCase
 import com.kemaltalas.fakeshop.domain.usecase.FavoritesUseCase
 import com.kemaltalas.fakeshop.domain.usecase.ProductUseCase

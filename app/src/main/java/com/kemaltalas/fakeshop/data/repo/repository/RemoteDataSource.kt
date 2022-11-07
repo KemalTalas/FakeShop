@@ -1,4 +1,4 @@
-package com.kemaltalas.fakeshop.domain.repository
+package com.kemaltalas.fakeshop.data.repo.repository
 
 import com.kemaltalas.fakeshop.data.model.Product
 import com.kemaltalas.fakeshop.data.model.Token

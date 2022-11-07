@@ -1,20 +1,20 @@
-package com.kemaltalas.fakeshop.domain.implementation
+package com.kemaltalas.fakeshop.data.repo.implementation
 
 import androidx.lifecycle.LiveData
 import com.kemaltalas.fakeshop.data.local.FakeShopDao
 import com.kemaltalas.fakeshop.data.model.*
 import com.kemaltalas.fakeshop.data.remote.ApiService
 import com.kemaltalas.fakeshop.data.util.Resource
-import com.kemaltalas.fakeshop.domain.repository.FakeShopRepository
-import com.kemaltalas.fakeshop.domain.repository.LocalDataSource
-import com.kemaltalas.fakeshop.domain.repository.RemoteDataSource
+import com.kemaltalas.fakeshop.data.repo.repository.FakeShopRepository
+import com.kemaltalas.fakeshop.data.repo.repository.LocalDataSource
+import com.kemaltalas.fakeshop.data.repo.repository.RemoteDataSource
 import retrofit2.Response
 import javax.inject.Inject
 
 class FakeShopRepositoryImp @Inject constructor(
     private val remoteDataSource: RemoteDataSource,
     private val localDataSource: LocalDataSource
-) : FakeShopRepository{
+) : FakeShopRepository {
     override suspend fun getAllProducts(): Resource<ArrayList<Product>> {
         return responseToProductListResult(remoteDataSource.getAllProducts())
     }

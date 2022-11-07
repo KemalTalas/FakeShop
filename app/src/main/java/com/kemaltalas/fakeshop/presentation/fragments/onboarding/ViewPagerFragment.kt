@@ -1,5 +1,6 @@
 package com.kemaltalas.fakeshop.presentation.fragments.onboarding
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -34,24 +35,26 @@ class ViewPagerFragment : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_view_pager,container,false)
 
-        val fragmentList = arrayListOf<Fragment>(
-            FirstOnboardFragment(),
-            SecondOnboardFragment(),
-            ThirdOnboardFragment()
-        )
-//        val navigateToHome = findNavController().navigate(ViewPagerFragmentDirections.actionViewPagerFragmentToHomeFragment())
-//        val adapter = ViewPagerAdapter(fragmentList,requireActivity().supportFragmentManager,lifecycle)
+
         val adapter = ViewPagerAdapter(imageslist,textlist,desclist,colorslist,visiblelist)
         val binding = FragmentViewPagerBinding.bind(view)
 
         adapter.setOnItemClickListener {
             val action = ViewPagerFragmentDirections.actionViewPagerFragmentToHomeFragment()
             findNavController().navigate(action)
+            onBoardingFinished()
         }
 
         binding.viewPager.adapter = adapter
 
         return view
+    }
+
+    private fun onBoardingFinished(){
+        val sharedPref = requireActivity().getSharedPreferences("onBoarding", Context.MODE_PRIVATE)
+        val editor = sharedPref.edit()
+        editor.putBoolean("Finished", true)
+        editor.apply()
     }
 
 }

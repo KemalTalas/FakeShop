@@ -2,10 +2,10 @@ package com.kemaltalas.fakeshop.data.di
 
 import com.kemaltalas.fakeshop.data.local.FakeShopDao
 import com.kemaltalas.fakeshop.data.remote.ApiService
-import com.kemaltalas.fakeshop.domain.implementation.LocalDataImp
-import com.kemaltalas.fakeshop.domain.implementation.RemoteDataSourceImp
-import com.kemaltalas.fakeshop.domain.repository.LocalDataSource
-import com.kemaltalas.fakeshop.domain.repository.RemoteDataSource
+import com.kemaltalas.fakeshop.data.repo.implementation.LocalDataImp
+import com.kemaltalas.fakeshop.data.repo.implementation.RemoteDataSourceImp
+import com.kemaltalas.fakeshop.data.repo.repository.LocalDataSource
+import com.kemaltalas.fakeshop.data.repo.repository.RemoteDataSource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -1,4 +1,4 @@
-package com.kemaltalas.fakeshop.domain.repository
+package com.kemaltalas.fakeshop.data.repo.repository
 
 import androidx.lifecycle.LiveData
 import com.kemaltalas.fakeshop.data.model.CartItems

@@ -75,6 +75,7 @@ class BasketFragment : Fragment(R.layout.fragment_basket) {
             binding.root.invalidate()
         }
 
+
         binding.cartFab.setOnClickListener {
             MaterialAlertDialogBuilder(requireContext(),R.style.MaterialAlertDialog_App)
                 .setTitle("Warning")

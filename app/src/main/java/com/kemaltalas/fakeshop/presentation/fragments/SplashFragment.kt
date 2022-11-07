@@ -25,20 +25,20 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
 
         val view = inflater.inflate(R.layout.fragment_splash,container,false)
 
+//        Handler(Looper.myLooper()!!).postDelayed({
+//            findNavController().navigate(R.id.action_splashFragment_to_viewPagerFragment)
+//        }, 2000)
         Handler(Looper.myLooper()!!).postDelayed({
-            findNavController().navigate(R.id.action_splashFragment_to_viewPagerFragment)
+            if(onBoardingFinished()){
+                findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
+            }else{
+                findNavController().navigate(R.id.action_splashFragment_to_viewPagerFragment)
+            }
         }, 2000)
 
         return view
 
-//        Set this condition after onboarding ui finished
-//        Handler().postDelayed({
-//            if(onBoardingFinished()){
-//                findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
-//            }else{
-//                findNavController().navigate(R.id.action_splashFragment_to_viewPagerFragment)
-//            }
-//        }, 3000)
+
 
 
     }

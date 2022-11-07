@@ -3,7 +3,7 @@ package com.kemaltalas.fakeshop.domain.usecase
 import androidx.lifecycle.LiveData
 import com.kemaltalas.fakeshop.data.model.CartItems
 import com.kemaltalas.fakeshop.data.model.Product
-import com.kemaltalas.fakeshop.domain.repository.FakeShopRepository
+import com.kemaltalas.fakeshop.data.repo.repository.FakeShopRepository
 import javax.inject.Inject
 
 class FavoritesUseCase @Inject constructor(
